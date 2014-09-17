@@ -21,9 +21,9 @@ void setup() {
   ADCSRA = 0xe5; // set the adc to free running mode
   ADMUX = 0x40; // use adc0
   DIDR0 = 0x01; // turn off the digital input for adc0
-  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
   pinMode(9, OUTPUT);
-  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
 }
 
 void loop() {
@@ -49,8 +49,8 @@ void loop() {
     if (reading_two<min){min=reading_two;}
     double range=max-min;
     double ratio=((reading_two-min)/range);
-    if(ratio>.85){analogWrite(9,0); delay(10);}
-    else{analogWrite(9,255);}
+    if(ratio>.85){analogWrite(9,HIGH); delay(10);}
+    else{analogWrite(9,LOW);}
     int x=analogRead(A1);
     Serial.println(x);
 /*

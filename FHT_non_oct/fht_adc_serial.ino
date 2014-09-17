@@ -7,9 +7,8 @@ with the fht. the data is sent out over the serial
 port at 115.2kb.
 */
 
-#define LIN_OUT8 1 // use the lin output function
+#define LOG_OUT 1 // use the lin output function
 #define FHT_N 256 // set to 256 point fht
-#define SCALE 256
   int total[100];
   int timeCounter=0;
 #include <FHT.h> // include the library
@@ -26,15 +25,16 @@ void resetTotal(){
 for(int i=0;i<100;i++){total[i]=0;}
   timeCounter=0;
 }
-void addition(int total[],uint8_t fht_lin_out8[]){
+void addition(int total[],uint8_t fht_log_out[]){
   for(int i=0;i<100;i++){
-    int conv= (int) fht_lin_out8[i];
+    int conv= (int) fht_log_out[i];
     total[i]+=conv;
   }
 }
 
 void loop() {
   resetTotal();
+  
   while(timeCounter<=100) { // reduces jitter
     cli();  // UDRE interrupt slows this way down on arduino1.0
     for (int i = 0 ; i < FHT_N ; i++) { // save 256 samples
@@ -50,15 +50,25 @@ void loop() {
     fht_window(); // window the data for better frequency response
     fht_reorder(); // reorder the data before doing the fht
     fht_run(); // process the data in the fht
-    fht_mag_lin8(); // take the output of the fht
+    fht_mag_log(); // take the output of the fht
     sei();
-    addition(total,fht_lin_out8);
+    addition(total,fht_log_out);
     timeCounter++;
+    if(timeCounter==50){ //display the 50th fht_log_out to see if it resembles averages
+      for(int p=0;p<100;p++){
+        Serial.print(fht_log_out[p]);
+        Serial.print("|");
+      }
+    }
   }
+  
+  Serial.print("\n");
   for(int i=0;i<100;i++){
     Serial.print(total[i]/timeCounter);
     Serial.print("|");
   }
+ 
+
   Serial.println("Start sound in 5");
   delay(5000);
   resetTotal();
@@ -78,9 +88,9 @@ while(timeCounter<=100) { // reduces jitter
     fht_window(); // window the data for better frequency response
     fht_reorder(); // reorder the data before doing the fht
     fht_run(); // process the data in the fht
-    fht_mag_lin8(); // take the output of the fht
+    fht_mag_log(); // take the output of the fht
     sei();
-    addition(total,fht_lin_out8);
+    addition(total,fht_log_out);
     timeCounter++;
 }    
 for(int i=0;i<100;i++){

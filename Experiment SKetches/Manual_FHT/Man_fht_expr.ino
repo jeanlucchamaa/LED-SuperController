@@ -2,7 +2,7 @@
 #define FHT_N 256 // set to 256 point fht
 #include <FHT.h> // include the library
 void doAnFHT(){
-	cli();
+	// cli();
   	ADCSRA = 0xe5; // set the adc to free running mode
   	ADMUX = 0x40; // use adc0
   	DIDR0 = 0x01; // turn off the digital input for adc0
@@ -15,10 +15,11 @@ void doAnFHT(){
       fht_input[i] = k;
       if(i%2==1){fht_input[i] = 0;}
 	}
+    Serial.print("check1");
 	fht_window();fht_reorder();fht_run();fht_mag_log();
-	sei();
+	// sei();
 	for(int i=0;i<100;i++){
-    Serial.print(fht_mag_log[i]);
+    Serial.print(fht_input[i]);
     Serial.print("|");
 	}
 }
@@ -32,5 +33,8 @@ void setup()
 
 void loop()
 {
-doAnFHT()	
+Serial.print("here");
+delay(3000);
+doAnFHT();
+delay(10000);
 }
