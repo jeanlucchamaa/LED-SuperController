@@ -40,14 +40,14 @@ uint16_t      spectrum[FFT_N/2]; // Spectrum output buffer
 volatile byte samplePos = 0;     // Buffer position counter
 
 byte
-  peak[8],      // Peak level of each column; used for falling dots
-  dotCount = 0, // Frame counter for delaying dot-falling speed
-  colCount = 0; // Frame counter for storing past column data
+    peak[8],      // Peak level of each column; used for falling dots
+    dotCount = 0, // Frame counter for delaying dot-falling speed
+    colCount = 0; // Frame counter for storing past column data
 int
-  col[8][10],   // Column levels for the prior 10 frames
-  minLvlAvg[8], // For dynamic adjustment of low & high ends of graph,
-  maxLvlAvg[8], // pseudo rolling averages for the prior few frames.
-  colDiv[8];    // Used when filtering FFT output to 8 columns
+    col[8][10],   // Column levels for the prior 10 frames
+    minLvlAvg[8], // For dynamic adjustment of low & high ends of graph,
+    maxLvlAvg[8], // pseudo rolling averages for the prior few frames.
+    colDiv[8];    // Used when filtering FFT output to 8 columns
 
 /*
 These tables were arrived at through testing, modeling and trial and error,
@@ -102,73 +102,66 @@ PROGMEM uint8_t
     col4data, col5data, col6data, col7data };
 
 void establishContact() {
- while (Serial.available() <= 0) {
-      Serial.write('A');   // send a capital A
-      delay(300);
-  }
+    while (Serial.available() <= 0) {
+        Serial.write('A');   // send a capital A
+        delay(300);
+    }
 }
 
 
 void setup() {
-  Serial.begin(115200);
-    // establishContact();  // send a byte to establish contact until Processing respon
-  uint8_t i, j, nBins, binNum, *data;
-
-  memset(peak, 0, sizeof(peak));
-  memset(col , 0, sizeof(col));
-
-  for(i=0; i<8; i++) {
-    minLvlAvg[i] = 0;
-    maxLvlAvg[i] = 512;
-    data         = (uint8_t *)pgm_read_word(&colData[i]);
-    nBins        = pgm_read_byte(&data[0]) + 2;
-    binNum       = pgm_read_byte(&data[1]);
-    for(colDiv[i]=0, j=2; j<nBins; j++)
-      colDiv[i] += pgm_read_byte(&data[j]);
-  }
-
-
-  // Init ADC free-run mode; f = ( 16MHz/prescaler ) / 13 cycles/conversion 
-  ADMUX  = ADC_CHANNEL; // Channel sel, right-adj, use AREF pin
-  //ADMUX = 0b00000000
-  ADCSRA = _BV(ADEN)  | // ADC enable
-           _BV(ADSC)  | // ADC start
-           _BV(ADATE) | // Auto trigger
-           _BV(ADIE)  | // Interrupt enable
-           _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0); // 128:1 / 13 = 9615 Hz
-  // ADCSRA = 0b11101111 = 239
-  ADCSRB = 0;                // Free run mode, no high MUX bit
-  DIDR0  = 1 << ADC_CHANNEL; // Turn off digital input for ADC pin
-  // TIMSK0 = 0;                // Timer0 off
-
-
-  sei(); // Enable interrupts
+    Serial.begin(115200);
+    sei(); // Enable interrupts
+}
+void sampleAndTransform(){
+    while(ADCSRA & _BV(ADIE)); // CALLS ISR UNTIL ADIE IS 0
+    fft_input(capture, bfly_buff);   // Samples -> complex #s
+    samplePos = 0;                   // Reset sample counter
+    fft_execute(bfly_buff);       // Process complex data
+    fft_output(bfly_buff, spectrum); // Complex -> spectrum
+    //ADCSRA |= _BV(ADIE);             // SETS ADIE TO 1 AND RESUMES ISR 
 }
 
-
-void loop() {
-
-  while(ADCSRA & _BV(ADIE)); // CALLS ISR UNTIL ADIE IS 0
-
-  fft_input(capture, bfly_buff);   // Samples -> complex #s
-  samplePos = 0;                   // Reset sample counter
-  ADCSRA |= _BV(ADIE);             // SETS ADIE TO 1 AND RESUMES ISR 
-  fft_execute(bfly_buff);          // Process complex data
-  fft_output(bfly_buff, spectrum); // Complex -> spectrum
-for (byte i = 0; i < 15; i++){
-      Serial.print(spectrum[i]);
+void startTheParty(){
+    // Init ADC free-run mode; f = ( 16MHz/prescaler ) / 13 cycles/conversion 
+    ADMUX  = 0x0; // Channel sel, right-adj, use AREF pin
+    //ADMUX = 0b00000000
+    ADCSRA = 0xEF;
+    // ADCSRA = 0b11101111 = 239 = 0xEF
+    ADCSRB = 0;                // Free run mode, no high MUX bit
+    DIDR0  = 1 << ADC_CHANNEL; // Turn off digital input for ADC pin
 }
-delay(5000);
+
+void partyMode() {
+    switch (ADMUX)
+    {
+        case 0x00:
+            startTheParty();
+            sampleAndTransform(); // Samples and performs an FFT
+            ADMUX=0x01;
+            break;
+        case 0x01:
+            if(analog)
+            //return ADMUX to 0x00
+            // ADCSRA |= _BV(ADIE);
+
+
+    }
+    for(int i=0;i<10;i++){// Do ten sets of samples and transforms.
+    sampleAndTransform();
+    ADCSRA |= _BV(ADIE)
+        }
+    //TODO: CHECK THE PUSHBUTTON
 }
+
+void loop(){
+}
+
 ISR(ADC_vect) { // Audio-sampling interrupt
-  static const int16_t noiseThreshold = 4;
-  int16_t              sample         = ADC; // 0-1023
-
-  capture[samplePos] =
-    ((sample > (512-noiseThreshold)) &&
-     (sample < (512+noiseThreshold))) ? 0 :
-    sample - 512; // Sign-convert for FFT; -512 to +511
-
+    static const int16_t noiseThreshold = 4;
+    int16_t              sample         = ADC; // 0-1023
+    capture[samplePos] =((sample > (512-noiseThreshold)) && (sample < (512+noiseThreshold))) ? 0 : sample - 512; // Sign-convert for FFT; -512 to +511 
   if(++samplePos >= FFT_N) ADCSRA &= ~_BV(ADIE); // Buffer full, interrupt off
-//Serial.println(ADCSRA);
+  //Serial.println(ADCSRA);
+
 }
