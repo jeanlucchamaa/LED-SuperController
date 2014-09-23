@@ -14,12 +14,12 @@ complex_t     bfly_buff[FFT_N];  // FFT "butterfly" buffer
 uint16_t      spectrum[FFT_N/2]; // Spectrum output buffer
 volatile byte samplePos = 0;     // Buffer position counter
 //global Variables for consolidate/testThree
-int UP 		= 1;
-int DOWN 	= 2;
-int LEFT 	= 3;
-int RIGHT 	= 4;
-int THROUGH	= 5;
-int NONE	= 0;
+const int UP 		= 1;
+const int DOWN 		= 2;
+const int LEFT 		= 3;
+const int RIGHT 	= 4;
+const int THROUGH	= 5;
+const int NONE		= 0;
 // global variables for menu orientiation
 // Menus are Stacked as Such
 /*
@@ -52,34 +52,28 @@ Menu 0
 
 */
 int currentMenu	=	2; // Which menu is the user currently in?
-int inAMode		=	0; // Is the user in a mode? 0=No , 1=Yes
 
-int menu0Pos	=	0;
-char* menu0[]	={	" Custom Color          ",
-					" Party Mode              ",
-					" Fade Mode               ",
-					" Strobe Mode             ",
-					" Settings				  "};
-int menu0Size	=	5;//The final index + 1 or the number of real items
+char* menu0[]	={	" Custom Color    ",
+					" Party Mode      ",
+					" Fade Mode       ",
+					" Strobe Mode     ",
+					" Settings        "};
 
-int menu1Pos	=	0;
-char* menu1[]	={	" Party Color      ",
-					" Strobe Color     ",
-					" Screen Color     "};
-int menu1Size	=	3; 
+char* menu1[]	={	" Party Color     ",
+					" Strobe Color    ",
+					" Screen Color    "};
 
-int menu2Pos	=	0;
-char* menu2[]	={	" Red",
-					" Orange",
-					" Yellow",
-					" Green",
-					" Blue",
-					" Purple"};
-int menu2Size	=	6;
+char* menu2[]	={	" Red             ",
+					" Orange          ",
+					" Yellow          ",
+					" Green           ",
+					" Blue            ",
+					" Purple          "};
 
 char** menuMenu[]	= {menu0,menu1,menu2};
-int upDown[]	={0,0,0}; //UpDown for menu 0, 1, and 2 respectively. 0=up, 1= Down
-
+int upDown[]	={1,0,0}; //UpDown for menu 0, 1, and 2 respectively. 0=up, 1= Down
+int menuPos[]	={4,0,0};
+int menuSize[]	={5,3,6};
 
 void setup(){
 	// set up the LCD's number of columns and rows: 
@@ -88,7 +82,7 @@ void setup(){
 	pinMode(10,OUTPUT);
 	pinMode(11,OUTPUT);
 	Serial.begin(9600);
-	analogReference(DEFAULT);
+	analogReference(EXTERNAL);
 }
 
 void establishContact() {
@@ -117,6 +111,25 @@ void startTheParty(){
     DIDR0  = 1 << ADC_CHANNEL; // Turn off digital input for ADC pin
 }
 
+int partyMode() {
+    switch (ADMUX)
+    {
+        case 0x00:
+            startTheParty();
+            sampleAndTransform(); // Samples and performs an FFT
+            ADMUX=0x01;
+            break;
+        case 0x01:
+            if(analogRead(A1)==100) //TODO: Change this Number!
+            return(0);
+            ADMUX=0x00;
+            break;
+        default:
+        	return(0);
+        	break;
+    }
+}
+
 int testThree() {
  	// returns 1U 2D 3L 4R 5C 0mistake
  	int ar[3];
@@ -139,10 +152,10 @@ int testThree() {
 		if (ar[1]==0)
 			return(2);
 		else 
-			return(-10);
+			return(0);
 	} 
   	else
-		return(1111);
+		return(0);
 }
 
 int consolidate(){
@@ -157,25 +170,6 @@ int consolidate(){
   	}
 }
   
-int partyMode() {
-    switch (ADMUX)
-    {
-        case 0x00:
-            startTheParty();
-            sampleAndTransform(); // Samples and performs an FFT
-            ADMUX=0x01;
-            break;
-        case 0x01:
-            if(analogRead(A1)==100) //TODO: Change this Number!
-            return(0);
-            ADMUX=0x00;
-            break;
-        default:
-        	return(0);
-        	break;
-    }
-}
-
 void apply(int r, int g, int b){
 	analogWrite(9,r); // red transistor base pin @ 9
 	analogWrite(10,g); // green transistor base pin @ 10
@@ -207,22 +201,35 @@ void fullfade(int wait){   // fade from red to green
 
 void customCol(){
 	int rpot, gpot, bpot;
-	rpot=analogRead(A0);
-	gpot=analogRead(A1);
-	bpot=analogRead(A2);
+	rpot=analogRead(A2);
+	delay(15);
+	gpot=analogRead(A3);
+	delay(15);
+	bpot=analogRead(A4);
+	delay(15);
 	apply(rpot/4,gpot/4,bpot/4);
+	lcd.print(rpot/4);
+	lcd.print(" ");
+	lcd.print(gpot/4);
+	lcd.print(" ");
+	lcd.print(bpot/4);
+	lcd.print("  ");
+	lcd.setCursor(0,0);
+	delay(50);
+
 }
 
 void loop(){ //Menu navigation - pushes to the functions.
-	/*
-	apply(0,0,255);
+	if(millis()<100){delay(100);} // don't jump the gun!
+	apply(255,0,0);
 	int cons=consolidate();
-	Switch(cons){ // Choose what to do with an input/ no input
-		case 0: //No movement(Display the screen)
+	Serial.println(cons);
+	switch(cons){ // Choose what to do with an input/ no input
+		case NONE: //No movement(Display the screen)
 			lcd.setCursor(0,0);
-			lcd.print((menuMenu[currentMenu])[menu0Pos-upDown[currentMenu]]);
+			lcd.print((menuMenu[currentMenu])[menuPos[currentMenu]-upDown[currentMenu]]);
 			lcd.setCursor(0,1);
-			lcd.print((menuMenu[currentMenu])[menu0Pos-upDown[currentMenu]+1]);
+			lcd.print((menuMenu[currentMenu])[menuPos[currentMenu]-upDown[currentMenu]+1]);
 			switch (upDown[currentMenu]) {
 				case 0:
 					lcd.setCursor(0,0);
@@ -234,18 +241,89 @@ void loop(){ //Menu navigation - pushes to the functions.
 					lcd.print("-");
 					break;
 				default:
+				lcd.setCursor(0,0);
 		  			lcd.print('error');
 		  			break;
 			}
-		case 1:
+		break;
+			
+		case UP:
+			switch (upDown[currentMenu]) {
+			    case 0://UP
+			    	if(menuPos[currentMenu]==0){
+			      		break;
+			  		}
+			      	else{
+			      		menuPos[currentMenu]-=1;
+			      		break;
+			      	}
+			    case 1://DOWN
+			    	upDown[currentMenu]=0;
+			    	menuPos[currentMenu]-=1;
+			    	break;
+			    default:
+			    	Serial.print("error45");
+			    	break;
+			}
+			break;
+
+		case DOWN:
+			switch (upDown[currentMenu]) {
+				    case 1: //DOWN
+				    	if(menuPos[currentMenu]==(menuSize[currentMenu]-1)){
+				      		break;
+				  		}
+				      	else{
+				      		menuPos[currentMenu]+=1;
+				      		break;
+				      	}
+				    case 0://UP
+				    	upDown[currentMenu]=1;
+				    	menuPos[currentMenu]+=1;
+				    	break;
+				    default:
+				    	Serial.print("error55");
+				    	break;
+				}
+			break;
+
+		case LEFT:
+			if(currentMenu!=0){ //Unless in main menu, just go back
+				currentMenu-=1; // to the previous menu
+			}
+			break;
+
+		case RIGHT:
+		case THROUGH: // When we select
+			switch (currentMenu) {
+				case 0: // Inside of Main Menu
+			    	switch(menuPos[0]){ // Each of the Main Menu options
+			    		case 0:
+			    		case 1:
+			    		case 2:
+			    		case 3:
+			    		case 4:
+
+
+
+
+			    	}
+
+			    	break;
+			    case 1: // Inside Menu 1
+			      currentMenu+=1;
+			      	break;
+			    default:
+			    Serial.print("tester");
+			      break;
+			}
+		break;
+
+		default:
+			Serial.print("error05");
+			break;
 	}
-*/
 
-
-int val=analogRead(A2);
-Serial.println(val);
-delay(40);
-// TODO: AREF is making my value fluctuate and act wildly. Kill it by fixing ADMUX!
 }
 
 
