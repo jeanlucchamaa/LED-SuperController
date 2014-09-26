@@ -4,7 +4,7 @@
 #define ADC_CHANNEL 0
 
 // initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(7,6,5,4,3,2);
+LiquidCrystal lcd(13,12,8,7,4,2);
 // global Variables for testThree & consolidate
 int globaLast=0;
 int lastDir=0;
@@ -13,6 +13,7 @@ int16_t       capture[FFT_N];    // Audio capture buffer
 complex_t     bfly_buff[FFT_N];  // FFT "butterfly" buffer
 uint16_t      spectrum[FFT_N/2]; // Spectrum output buffer
 volatile byte samplePos = 0;     // Buffer position counter
+int party =0;
 //global Variables for consolidate/testThree
 const int UP 		= 1;
 const int DOWN 		= 2;
@@ -24,7 +25,7 @@ const int NONE		= 0;
 // Menus are Stacked as Such
 /*
 Menu 0
-- Custom Color
+- Custom Color 
 	- Execute CustomCol()
 - Party Mode
 	- Execute Party Mode
@@ -51,7 +52,7 @@ Menu 0
 		- Color Scheme N
 
 */
-int currentMenu	=	2; // Which menu is the user currently in?
+int currentMenu	=	0; // Which menu is the user currently in?
 
 char* menu0[]	={	" Custom Color    ",
 					" Party Mode      ",
@@ -63,17 +64,37 @@ char* menu1[]	={	" Party Color     ",
 					" Strobe Color    ",
 					" Screen Color    "};
 
-char* menu2[]	={	" Red             ",
+char* menu2[]	={	" Lightning       ",
+					" White           ",
+					" Red             ",
 					" Orange          ",
 					" Yellow          ",
 					" Green           ",
+					" Turquoise       ",
 					" Blue            ",
-					" Purple          "};
+					" Purple          ",
+					" Pink            "};
 
 char** menuMenu[]	= {menu0,menu1,menu2};
-int upDown[]	={1,0,0}; //UpDown for menu 0, 1, and 2 respectively. 0=up, 1= Down
-int menuPos[]	={4,0,0};
-int menuSize[]	={5,3,6};
+int upDown[]	={0,0,0}; //UpDown for menu 0, 1, and 2 respectively. 0=up, 1= Down
+int menuPos[]	={0,0,0};
+int menuSize[]	={5,3,10};
+
+int palette[10][3]={	{65 ,200,120},
+						{255,255,255},
+						{255,0  ,0  },
+						{165,30 ,0  },
+						{255,64 ,0  },
+						{0  ,255,0  },
+						{0  ,255,255},
+						{0  ,0  ,255},
+						{255,0  ,255},
+						{255,0  ,25 }};
+
+int modeCols[3][3]={	{255,255,255}, // Party = White
+						{255,255,255}, // Strobe = White
+						{65 ,200,120}};// Screen = Lightning
+
 
 void setup(){
 	// set up the LCD's number of columns and rows: 
@@ -135,7 +156,7 @@ int testThree() {
  	int ar[3];
  	for(int i=0;i<3;i++)
   	{
-		int sensorValue = analogRead(A1);
+		int sensorValue = analogRead(A2);
 		ar[i] = sensorValue;
 		delay(10);        // delay in between reads for stability  
   	}
@@ -171,57 +192,97 @@ int consolidate(){
 }
   
 void apply(int r, int g, int b){
-	analogWrite(9,r); // red transistor base pin @ 9
-	analogWrite(10,g); // green transistor base pin @ 10
-	analogWrite(11,b); // blue transistor base pin @ 11
+	analogWrite(10,r); // red transistor base pin @ 9
+	analogWrite(11,g); // green transistor base pin @ 10
+	analogWrite(9,b); // blue transistor base pin @ 11
 }
 
-void fullfade(int wait){   // fade from red to green
-	int r=255;int g=0;int b=0;
-	for(int del=0;del<256;del++)
-	{
-		apply(r-del,g+del,b);
-		delay(wait);
-	}
-	// fade from green to blue
-	r=0;g=255;b=0;
-	for(int del=0;del<256;del++)
-	{
-		apply(r,g-del,b+del);
-		delay(wait);
-	}
-	// fade from blue to red
-	r=0;g=0;b=255;
-	for(int del=0;del<256;del++)
-	{
-		apply(r+del,g,b-del);
-		delay(wait);
+void fullfade(){   // fade from red to green
+	while(1){
+
+		int r=255;int g=0;int b=0;
+		for(int del=0;del<256;del++)
+		{
+
+			int wait= analogRead(A3)/20;
+			apply(r-del,g+del,b);
+			delay(wait);
+			if(consolidate()==LEFT) return;
+			lcd.setCursor(14,0);
+			lcd.print(wait);
+			lcd.print("  ");
+		}
+		// fade from green to blue
+		r=0;g=255;b=0;
+		for(int del=0;del<256;del++)
+		{	
+			int wait= analogRead(A3)/20;
+			apply(r,g-del,b+del);
+			delay(wait);
+			if(consolidate()==LEFT) return;
+			lcd.setCursor(14,0);
+			lcd.print(wait);
+			lcd.print("  ");
+		}
+		// fade from blue to red
+		r=0;g=0;b=255;
+		for(int del=0;del<256;del++)
+		{
+			int wait= analogRead(A3)/20;
+			apply(r+del,g,b-del);
+			delay(wait);
+			if(consolidate()==LEFT) return;
+			lcd.setCursor(14,0);
+			lcd.print(wait);
+			lcd.print("  ");
+		}
 	}
 }
 
 void customCol(){
-	int rpot, gpot, bpot;
-	rpot=analogRead(A2);
-	delay(15);
-	gpot=analogRead(A3);
-	delay(15);
-	bpot=analogRead(A4);
-	delay(15);
-	apply(rpot/4,gpot/4,bpot/4);
-	lcd.print(rpot/4);
-	lcd.print(" ");
-	lcd.print(gpot/4);
-	lcd.print(" ");
-	lcd.print(bpot/4);
-	lcd.print("  ");
-	lcd.setCursor(0,0);
-	delay(50);
-
+	while(1){
+		int rpot, gpot, bpot;
+		lcd.setCursor(0,0);
+		lcd.print(" RED GREEN BLUE ");
+		rpot=analogRead(A3);
+		lcd.setCursor(1,1);
+		lcd.print(rpot*10/102);
+		if(consolidate()==LEFT) return;
+		lcd.print(" ");
+		gpot=analogRead(A4);
+		lcd.setCursor(6,1);
+		lcd.print(gpot*10/102);
+		if(consolidate()==LEFT) return;
+		lcd.print(" ");
+		bpot=analogRead(A5);
+		lcd.setCursor(12,1);
+		lcd.print(bpot*10/102);
+		if(consolidate()==LEFT) return;
+		lcd.print(" ");
+		apply(rpot/4,gpot/4,bpot/4)
+;	}
 }
 
+void strobeMode(){
+	while(1){
+		int delayTime=analogRead(A3);
+		lcd.setCursor(12,0);
+		lcd.print(delayTime);
+		lcd.print("  ");
+		apply(modeCols[1][0],modeCols[1][1],modeCols[1][2]);
+		if(consolidate()==LEFT) return;
+		delay(delayTime+5);
+
+		delayTime=analogRead(A3);
+		apply(0,0,0);
+		if(consolidate()==LEFT) return;
+		delay(delayTime+5);
+		}
+
+}
 void loop(){ //Menu navigation - pushes to the functions.
 	if(millis()<100){delay(100);} // don't jump the gun!
-	apply(255,0,0);
+	apply(modeCols[2][0],modeCols[2][1],modeCols[2][2]);
 	int cons=consolidate();
 	Serial.println(cons);
 	switch(cons){ // Choose what to do with an input/ no input
@@ -245,7 +306,7 @@ void loop(){ //Menu navigation - pushes to the functions.
 		  			lcd.print('error');
 		  			break;
 			}
-		break;
+			break;
 			
 		case UP:
 			switch (upDown[currentMenu]) {
@@ -284,7 +345,7 @@ void loop(){ //Menu navigation - pushes to the functions.
 				    default:
 				    	Serial.print("error55");
 				    	break;
-				}
+			}
 			break;
 
 		case LEFT:
@@ -298,39 +359,67 @@ void loop(){ //Menu navigation - pushes to the functions.
 			switch (currentMenu) {
 				case 0: // Inside of Main Menu
 			    	switch(menuPos[0]){ // Each of the Main Menu options
-			    		case 0:
-			    		case 1:
-			    		case 2:
-			    		case 3:
-			    		case 4:
+			    		case 0:  // Custom Color
+		    				delay(500);
+		    				lcd.setCursor(0,1);
+		    				lcd.print("               ");
+		    				customCol();
+		    				break;
+			    		case 2:  // Fade
+		    				delay(500);
+		    				lcd.setCursor(0,0);
+		    				lcd.print("Speed (0-51):             ");
+		    				lcd.setCursor(0,1);
+		    				lcd.print("Turn Top Knob");
+		    				fullfade();
+		    				break;
+			    		case 3: // strobe
+			    			delay(500);
+		    				lcd.setCursor(0,0);
+		    				lcd.print("Speed(1024):             ");
+		    				lcd.setCursor(0,1);
+		    				lcd.print("Turn Top Knob");
+		    				strobeMode();
+		    				break;
+			    		case 4: // Settings option: push forward
+			    			currentMenu=1;
+			    			break;
 
-
-
-
+			    		default:
+			    			lcd.print("Balls");
+			    			break;
 			    	}
-
 			    	break;
 			    case 1: // Inside Menu 1
-			      currentMenu+=1;
+			    	currentMenu=2;
 			      	break;
+
+				case 2: // Color Options 	
+					//the red value of the chosen in the related modeCols
+					modeCols[menuPos[1]][0]=palette[menuPos[2]][0];
+					modeCols[menuPos[1]][1]=palette[menuPos[2]][1];
+					modeCols[menuPos[1]][2]=palette[menuPos[2]][2];
+					break;
+
+
 			    default:
 			    Serial.print("tester");
 			      break;
 			}
-		break;
+			break;
 
 		default:
 			Serial.print("error05");
 			break;
-	}
 
+}
 }
 
 
 
 
 ISR(ADC_vect) { // Audio-sampling interrupt
-    if(inAMode==1){
+    if(party==1){
     static const int16_t noiseThreshold = 4;
     int16_t              sample         = ADC; // 0-1023
     capture[samplePos] =((sample > (512-noiseThreshold)) && (sample < (512+noiseThreshold))) ? 0 : sample - 512; // Sign-convert for FFT; -512 to +511 
