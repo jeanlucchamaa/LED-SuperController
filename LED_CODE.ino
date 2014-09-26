@@ -102,7 +102,6 @@ void setup(){
 	pinMode(9,OUTPUT);
 	pinMode(10,OUTPUT);
 	pinMode(11,OUTPUT);
-	Serial.begin(9600);
 	analogReference(EXTERNAL);
 }
 
@@ -161,10 +160,9 @@ int testThree() {
 		delay(10);        // delay in between reads for stability  
   	}
   	if(ar[0]==ar[1] && ar[1]==ar[2]){
-
 		if (ar[1]==1023)
 			return(4);
-		if (ar[1]==513)
+		if (ar[1]==512)
 			return(1);
 		if (ar[1]==256)
 			return(3);
@@ -192,9 +190,15 @@ int consolidate(){
 }
   
 void apply(int r, int g, int b){
-	analogWrite(10,r); // red transistor base pin @ 9
-	analogWrite(11,g); // green transistor base pin @ 10
-	analogWrite(9,b); // blue transistor base pin @ 11
+	analogWrite(10,r); 
+	analogWrite(11,g);
+	analogWrite(9,b);
+}
+void screenApply(int r, int g, int b){
+	analogWrite(3, 255-g);
+	analogWrite(5, 255-b);
+	analogWrite(6, 255-r);
+
 }
 
 void fullfade(){   // fade from red to green
@@ -259,8 +263,8 @@ void customCol(){
 		lcd.print(bpot*10/102);
 		if(consolidate()==LEFT) return;
 		lcd.print(" ");
-		apply(rpot/4,gpot/4,bpot/4)
-;	}
+		apply(rpot/4,gpot/4,bpot/4);	
+	}
 }
 
 void strobeMode(){
@@ -282,9 +286,8 @@ void strobeMode(){
 }
 void loop(){ //Menu navigation - pushes to the functions.
 	if(millis()<100){delay(100);} // don't jump the gun!
-	apply(modeCols[2][0],modeCols[2][1],modeCols[2][2]);
+	screenApply(modeCols[2][0],modeCols[2][1],modeCols[2][2]);
 	int cons=consolidate();
-	Serial.println(cons);
 	switch(cons){ // Choose what to do with an input/ no input
 		case NONE: //No movement(Display the screen)
 			lcd.setCursor(0,0);
@@ -302,8 +305,6 @@ void loop(){ //Menu navigation - pushes to the functions.
 					lcd.print("-");
 					break;
 				default:
-				lcd.setCursor(0,0);
-		  			lcd.print('error');
 		  			break;
 			}
 			break;
@@ -323,7 +324,6 @@ void loop(){ //Menu navigation - pushes to the functions.
 			    	menuPos[currentMenu]-=1;
 			    	break;
 			    default:
-			    	Serial.print("error45");
 			    	break;
 			}
 			break;
@@ -343,7 +343,6 @@ void loop(){ //Menu navigation - pushes to the functions.
 				    	menuPos[currentMenu]+=1;
 				    	break;
 				    default:
-				    	Serial.print("error55");
 				    	break;
 			}
 			break;
@@ -386,7 +385,6 @@ void loop(){ //Menu navigation - pushes to the functions.
 			    			break;
 
 			    		default:
-			    			lcd.print("Balls");
 			    			break;
 			    	}
 			    	break;
@@ -403,13 +401,11 @@ void loop(){ //Menu navigation - pushes to the functions.
 
 
 			    default:
-			    Serial.print("tester");
 			      break;
 			}
 			break;
 
 		default:
-			Serial.print("error05");
 			break;
 
 }
