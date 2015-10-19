@@ -1,6 +1,7 @@
 // Jean-Luc Chamaa - PreFab LED Strip Control via Ardunio
 #include <LiquidCrystal.h>
 #include <ffft.h>
+#include <stdio.h>
 #define ADC_CHANNEL 0
 
 // initialize the library with the numbers of the interface pins
@@ -14,6 +15,8 @@ complex_t     bfly_buff[FFT_N];  // FFT "butterfly" buffer
 uint16_t      spectrum[FFT_N/2]; // Spectrum output buffer
 volatile byte samplePos = 0;     // Buffer position counter
 int party =0;
+
+
 //global Variables for consolidate/testThree
 const int UP 		= 1;
 const int DOWN 		= 2;
@@ -103,6 +106,7 @@ void setup(){
 	pinMode(10,OUTPUT);
 	pinMode(11,OUTPUT);
 	analogReference(EXTERNAL);
+	Serial.begin(9600);
 }
 
 void establishContact() {
@@ -122,13 +126,7 @@ void sampleAndTransform(){
 }
 
 void startTheParty(){
-    // Init ADC free-run mode; f = ( 16MHz/prescaler ) / 13 cycles/conversion 
-    ADMUX  = 0x0; // Channel sel, right-adj, use AREF pin
-    //ADMUX = 0b00000000
-    ADCSRA = 0xEF;
-    // ADCSRA = 0b11101111 = 239 = 0xEF
-    ADCSRB = 0;                // Free run mode, no high MUX bit
-    DIDR0  = 1 << ADC_CHANNEL; // Turn off digital input for ADC pin
+	
 }
 
 int partyMode() {
@@ -244,26 +242,73 @@ void fullfade(){   // fade from red to green
 }
 
 void customCol(){
+	lcd.setCursor(0,0);
+	lcd.print(" RED GREEN BLUE ");
+	int rpot = 0;
+	int gpot = 0;
+	int bpot = 0;
+	bool clapper=false;
 	while(1){
-		int rpot, gpot, bpot;
-		lcd.setCursor(0,0);
-		lcd.print(" RED GREEN BLUE ");
-		rpot=analogRead(A3);
-		lcd.setCursor(1,1);
-		lcd.print(rpot*10/102);
 		if(consolidate()==LEFT) return;
-		lcd.print(" ");
-		gpot=analogRead(A4);
-		lcd.setCursor(6,1);
-		lcd.print(gpot*10/102);
-		if(consolidate()==LEFT) return;
-		lcd.print(" ");
-		bpot=analogRead(A5);
-		lcd.setCursor(12,1);
-		lcd.print(bpot*10/102);
-		if(consolidate()==LEFT) return;
-		lcd.print(" ");
-		apply(rpot/4,gpot/4,bpot/4);	
+		if(consolidate()==DOWN) clapper=true; //enter clap mode by pressing down
+		if(rpot!=analogRead(A3)){
+			lcd.setCursor(1,1);
+			lcd.print(rpot*10/102);
+			lcd.print(" ");
+			rpot=analogRead(A3);
+		}
+		if(gpot!=analogRead(A4)){
+			gpot=analogRead(A4);
+			lcd.setCursor(6,1);
+			lcd.print(gpot*10/102);
+			lcd.print(" ");
+		}
+		if(bpot!=analogRead(A5)){
+			bpot=analogRead(A5);
+			lcd.setCursor(12,1);
+			lcd.print(bpot*10/102);
+			lcd.print(" ");
+		}
+		apply(rpot/4,gpot/4,bpot/4);
+		if(clapper){
+			boolean lightState = false;
+			int relay = 13;
+			int claps = 0;
+			long detectionSpanInitial = 0;
+			long detectionSpan = 0;
+			pinMode(A1, INPUT);
+			pinMode(relay, OUTPUT);
+			while(analogRead(A5)!=0){ //exit clap mode by turning red to 0
+				int sensorState = digitalRead(A1);
+				if (sensorState == 1){
+					if (claps == 0){
+						detectionSpanInitial = detectionSpan = millis();
+						claps++;
+					}
+					else if (claps > 0 && millis()-detectionSpan >= 50)
+					{
+					  detectionSpan = millis();
+					  claps++;
+					}
+				}
+				if (millis()-detectionSpanInitial >= 400){
+					if (claps == 2){
+						if (!lightState){
+							lightState = true;
+							digitalWrite(relay, HIGH);
+							apply(rpot/4,gpot/4,bpot/4);
+						}
+					    else if (lightState){
+							lightState = false;
+							digitalWrite(relay, LOW);
+							apply(0,0,0);
+					    }
+					}
+					claps = 0;
+				}
+			}
+			clapper=false;
+		}
 	}
 }
 
@@ -370,6 +415,8 @@ void loop(){ //Menu navigation - pushes to the functions.
 		    				lcd.print("               ");
 		    				customCol();
 		    				break;
+		    			case 1:
+		    				startTheParty();
 			    		case 2:  // Fade
 		    				delay(500);
 		    				lcd.setCursor(0,0);
