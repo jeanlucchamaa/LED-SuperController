@@ -83,8 +83,8 @@ int menuSize[]	={5,3,10};
 int palette[10][3]={	{65 ,200,120},
 						{255,255,255},
 						{255,0  ,0  },
-						{165,30 ,0  },
-						{255,64 ,0  },
+						{165,30 ,0  }
+,						{255,64 ,0  },
 						{0  ,255,0  },
 						{0  ,255,255},
 						{0  ,0  ,255},
@@ -160,15 +160,15 @@ int testThree() {
 		delay(10);        // delay in between reads for stability  
   	}
   	if(ar[0]==ar[1] && ar[1]==ar[2]){
-		if (ar[1]==1023)
+		if (ar[1]>1020) //exact 1023
 			return(4);
-		if (ar[1]==512)
+		if (ar[1]>509 && ar[1]< 515) //exact 512
 			return(1);
-		if (ar[1]==256)
+		if (ar[1]>253 && ar[1]<259) //exact 256
 			return(3);
-		if (ar[1]==768)
+		if (ar[1]>765 && ar[1]<771) //exact 768
 			return(5);
-		if (ar[1]==0)
+		if (ar[1]<5) //exact 0 
 			return(2);
 		else 
 			return(0);
@@ -268,21 +268,27 @@ void customCol(){
 }
 
 void strobeMode(){
+        
+	unsigned long previousMillis = millis();
+        boolean paused=false;
 	while(1){
 		int delayTime=analogRead(A3);
-		lcd.setCursor(12,0);
-		lcd.print(delayTime);
+		lcd.setCursor(6,0);
+		lcd.print(60000/(delayTime+100));
 		lcd.print("  ");
-		apply(modeCols[1][0],modeCols[1][1],modeCols[1][2]);
 		if(consolidate()==LEFT) return;
-		delay(delayTime+5);
+		if(consolidate()==THROUGH) paused=!paused;
+		unsigned long currentMillis = millis();
+                if (currentMillis - previousMillis >= delayTime && !paused) {
+                  // save the last time you blinked the LED
+                  previousMillis = currentMillis;
+		  apply(modeCols[1][0],modeCols[1][1],modeCols[1][2]);
+                  delay(100);
+                  apply(0,0,0);
+                }
 
-		delayTime=analogRead(A3);
-		apply(0,0,0);
-		if(consolidate()==LEFT) return;
-		delay(delayTime+5);
-		}
 
+      }
 }
 void loop(){ //Menu navigation - pushes to the functions.
 	if(millis()<100){delay(100);} // don't jump the gun!
@@ -375,7 +381,7 @@ void loop(){ //Menu navigation - pushes to the functions.
 			    		case 3: // strobe
 			    			delay(500);
 		    				lcd.setCursor(0,0);
-		    				lcd.print("Speed(1024):             ");
+		    				lcd.print("BPM:             ");
 		    				lcd.setCursor(0,1);
 		    				lcd.print("Turn Top Knob");
 		    				strobeMode();
