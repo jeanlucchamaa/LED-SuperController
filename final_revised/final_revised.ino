@@ -1,6 +1,6 @@
 // Jean-Luc Chamaa - PreFab LED Strip Control via Ardunio
 #include <LiquidCrystal.h>
-#include <ffft.h>
+//#include <ffft.h>
 #include <stdio.h>
 #define ADC_CHANNEL 0
 
@@ -9,11 +9,13 @@ LiquidCrystal lcd(13,12,8,7,4,2);
 // global Variables for testThree & consolidate
 int globaLast=0;
 int lastDir=0;
+/*
 // global variables for the fft implementation
 int16_t       capture[FFT_N];    // Audio capture buffer
 complex_t     bfly_buff[FFT_N];  // FFT "butterfly" buffer
 uint16_t      spectrum[FFT_N/2]; // Spectrum output buffer
 volatile byte samplePos = 0;     // Buffer position counter
+*/
 int party =0;
 
 
@@ -58,7 +60,6 @@ Menu 0
 int currentMenu	=	0; // Which menu is the user currently in?
 
 char* menu0[]	={	" Custom Color    ",
-					" Party Mode      ",
 					" Fade Mode       ",
 					" Strobe Mode     ",
 					" Settings        "};
@@ -115,7 +116,7 @@ void establishContact() {
         delay(300);
     }
 }
-
+/*
 void sampleAndTransform(){
     while(ADCSRA & _BV(ADIE)); // CALLS ISR UNTIL ADIE IS 0
     fft_input(capture, bfly_buff);   // Samples -> complex #s
@@ -124,12 +125,13 @@ void sampleAndTransform(){
     fft_output(bfly_buff, spectrum); // Complex -> spectrum
     //ADCSRA |= _BV(ADIE);             // SETS ADIE TO 1 AND RESUMES ISR 
 }
-
+*/
 void startTheParty(){
 	
 }
 
 int partyMode() {
+  /*
     switch (ADMUX)
     {
         case 0x00:
@@ -146,6 +148,7 @@ int partyMode() {
         	return(0);
         	break;
     }
+    */
 }
 
 int testThree() {
@@ -201,42 +204,42 @@ void screenApply(int r, int g, int b){
 
 void fullfade(){   // fade from red to green
 	while(1){
-
+    int wait=0;
 		int r=255;int g=0;int b=0;
-		for(int del=0;del<256;del++)
+		for(int del=0;del<256;)
 		{
 
-			int wait= analogRead(A3)/20;
+			int wait= 1+analogRead(A3)/50;
 			apply(r-del,g+del,b);
-			delay(wait);
 			if(consolidate()==LEFT) return;
 			lcd.setCursor(14,0);
-			lcd.print(wait);
-			lcd.print("  ");
+      lcd.print(wait);
+      lcd.print(" ");
+      del=del+wait;
 		}
 		// fade from green to blue
 		r=0;g=255;b=0;
-		for(int del=0;del<256;del++)
+		for(int del=0;del<256;)
 		{	
-			int wait= analogRead(A3)/20;
+			int wait= 1+analogRead(A3)/50;
 			apply(r,g-del,b+del);
-			delay(wait);
 			if(consolidate()==LEFT) return;
-			lcd.setCursor(14,0);
-			lcd.print(wait);
-			lcd.print("  ");
+      lcd.setCursor(14,0);
+      lcd.print(wait);
+      lcd.print(" ");
+      del=del+wait;
 		}
 		// fade from blue to red
 		r=0;g=0;b=255;
-		for(int del=0;del<256;del++)
+		for(int del=0;del<256;)
 		{
-			int wait= analogRead(A3)/20;
+			int wait= 1+analogRead(A3)/50;
 			apply(r+del,g,b-del);
-			delay(wait);
 			if(consolidate()==LEFT) return;
 			lcd.setCursor(14,0);
-			lcd.print(wait);
-			lcd.print("  ");
+      lcd.print(wait);
+      lcd.print(" ");
+      del=del+wait;
 		}
 	}
 }
@@ -278,9 +281,15 @@ void customCol(){
 			long detectionSpan = 0;
 			pinMode(A1, INPUT);
 			pinMode(relay, OUTPUT);
+      lcd.setCursor(0,0);
+      lcd.print("    CLAPPER     ");
+      lcd.setCursor(0,1);
+      lcd.print("BLUE = 0 -> EXIT");
 			while(analogRead(A5)!=0){ //exit clap mode by turning red to 0
+				
 				int sensorState = digitalRead(A1);
 				if (sensorState == 1){
+          Serial.println("detected");
 					if (claps == 0){
 						detectionSpanInitial = detectionSpan = millis();
 						claps++;
@@ -307,7 +316,25 @@ void customCol(){
 					claps = 0;
 				}
 			}
+      lcd.setCursor(0,0);
+      lcd.print(" RED GREEN BLUE ");
+      lcd.setCursor(0,1);
+      lcd.print("                ");
 			clapper=false;
+      rpot=analogRead(A3);
+      lcd.setCursor(1,1);
+      lcd.print(rpot*10/102);
+      lcd.print(" ");
+      
+      gpot=analogRead(A4);
+      lcd.setCursor(6,1);
+      lcd.print(gpot*10/102);
+      lcd.print(" ");
+      bpot=analogRead(A5);
+      lcd.setCursor(12,1);
+      lcd.print(bpot*10/102);
+      lcd.print(" ");
+    
 		}
 	}
 }
@@ -415,17 +442,16 @@ void loop(){ //Menu navigation - pushes to the functions.
 		    				lcd.print("               ");
 		    				customCol();
 		    				break;
-		    			case 1:
-		    				startTheParty();
-			    		case 2:  // Fade
+		    			
+			    		case 1:  // Fade
 		    				delay(500);
 		    				lcd.setCursor(0,0);
-		    				lcd.print("Speed (0-51):             ");
+		    				lcd.print("Speed (1-20):             ");
 		    				lcd.setCursor(0,1);
 		    				lcd.print("Turn Top Knob");
 		    				fullfade();
 		    				break;
-			    		case 3: // strobe
+			    		case 2: // strobe
 			    			delay(500);
 		    				lcd.setCursor(0,0);
 		    				lcd.print("BPM:             ");
@@ -433,7 +459,7 @@ void loop(){ //Menu navigation - pushes to the functions.
 		    				lcd.print("Turn Top Knob");
 		    				strobeMode();
 		    				break;
-			    		case 4: // Settings option: push forward
+			    		case 3: // Settings option: push forward
 			    			currentMenu=1;
 			    			break;
 
@@ -466,7 +492,7 @@ void loop(){ //Menu navigation - pushes to the functions.
 
 
 
-
+/*
 ISR(ADC_vect) { // Audio-sampling interrupt
     if(party==1){
     static const int16_t noiseThreshold = 4;
@@ -475,3 +501,4 @@ ISR(ADC_vect) { // Audio-sampling interrupt
   if(++samplePos >= FFT_N) ADCSRA &= ~_BV(ADIE); // Buffer full, interrupt off
 }
 }
+*/
