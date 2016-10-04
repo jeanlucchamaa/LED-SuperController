@@ -11,6 +11,7 @@ void apply(byte r, byte g, byte b){
 
 
 void setup(){
+
 	Serial.begin(38400); //start Serial comm
 	pinMode(A0, INPUT); // potentiometer input pins
 	pinMode(A1, INPUT);
@@ -25,7 +26,7 @@ void setup(){
 
 void recieveCommand() {
 	static byte ndx = 0;
-	char endMarker = '\r'; //carriage return marks end of serial line
+	char endMarker = '\0'; //carriage return marks end of serial line
 	char rc;
 	while (Serial.available() > 0 && newData == false) {
 		rc = Serial.read(); // reads in one byte from serial buffer
@@ -40,10 +41,14 @@ void recieveCommand() {
 			receivedChars[ndx] = '\0'; // demarcate the end of OUR string.
 			ndx = 0;
 			newData = true;
-			if(receivedChars[3]!=0){ // check final byte about whether to accept or ignore incoming data
-				red=receivedChars[0]; // if byte!=0, set values to recieved data
-				green=receivedChars[1];
-				blue=receivedChars[2];
+			byte r0=receivedChars[0]-1;
+			byte r1=receivedChars[1]-1;
+			byte r2=receivedChars[2]-1;
+			byte r3=receivedChars[3]-1;
+			if(r3!=0){ // check final byte about whether to accept or ignore incoming data
+				red=r0; // if byte!=0, set values to recieved data
+				green=r1;
+				blue=r2;
 			}
 			else{
 				red=analogRead(A4)/4; // if byte ==0, set tactile numbers
@@ -57,18 +62,8 @@ void recieveCommand() {
 
 
 void loop(){
-	while(!Serial.available()){ // Until something is sent from Serial
-		red=analogRead(A4)/4; //  set tactile numbers
-		green=analogRead(A1)/4;
-		blue=analogRead(A0)/4; 
-		apply(red, green,blue); // apply tactile numbers	
-	}
-	// A SERIAL COMMAND HAS BEEN RECIEVED!
-	while(true){
+
 		recieveCommand(); // recieve values and set numbers
 		apply(red,green,blue); // apply the set numbers
-	}
-
-	
 }
 // TODO Create ISR's to handle changes in the pots

@@ -1,12 +1,12 @@
 import serial, time
 from flask import Flask, render_template, request
-
 app = Flask(__name__)
 @app.route("/")
 def hello():
-    global ser
-    ser = serial.Serial('/dev/ttyS2', 38400);
-    return render_template('ui.html')
+    if 'ser' not in locals():
+        global ser
+        ser = serial.Serial('/dev/ttyS2', 38400)
+        return render_template('ui.html')
 
 @app.route("/apply")
 def application():
@@ -16,8 +16,10 @@ def application():
     sendbit=int(request.args.get('s'))
     ba=bytearray()
     ba[0:3]=[red,green,blue,sendbit]
+    for index,value in enumerate(ba):
+        ba[index]=min(255,value+1)
     ser.write(ba)
-    ser.write('\r')
+    ser.write('\0')
     return('potato')
 
 if __name__ == "__main__":
