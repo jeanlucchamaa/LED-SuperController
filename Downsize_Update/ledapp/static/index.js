@@ -3,8 +3,7 @@
 		$.get('/apply',vals);		
 	}
 
-  $( function() {
-
+  $(function() {
 	function hexFromRGB(r, g, b) {
 	  var hex = [
 		r.toString( 16 ),
@@ -57,6 +56,9 @@
 		$("#pane4").hide();
 		$("[role='presentation']").removeClass("active");
 		$("#b2").addClass("active");
+        $(".full-spectrum").trigger("click");
+        $('.sp-replacer').hide();
+		$(window).trigger('resize');
 	});
  
 	$("#b3").click( function (){
@@ -66,8 +68,6 @@
 		$("#pane4").hide();
 		$("[role='presentation']").removeClass("active");
 		$("#b3").addClass("active");
-        $(".full-spectrum").trigger("click");
-        $(".pane > .full-spectrum").hide();
 	});
  
 	$("#b4").click( function (){
@@ -79,4 +79,5 @@
 		$("#b4").addClass("active");
 	});
 
+    $('#b1').trigger("click");
   } );

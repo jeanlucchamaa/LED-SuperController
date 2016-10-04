@@ -41,7 +41,7 @@
         togglePaletteOnly: false,
         showSelectionPalette: true,
         localStorageKey: false,
-        appendTo: "body",
+        appendTo: "#pane2",
         maxSelectionSize: 7,
         //EDIT change words
         cancelText: "revert",
