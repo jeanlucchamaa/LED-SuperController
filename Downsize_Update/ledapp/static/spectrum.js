@@ -43,8 +43,9 @@
         localStorageKey: false,
         appendTo: "body",
         maxSelectionSize: 7,
-        cancelText: "cancel",
-        chooseText: "choose",
+        //EDIT change words
+        cancelText: "revert",
+        chooseText: "confirm",
         togglePaletteMoreText: "more",
         togglePaletteLessText: "less",
         clearText: "Clear Color Selection",
@@ -670,6 +671,12 @@
         function hide() {
             // Return if hiding is unnecessary
             if (!visible || flat) { return; }
+            
+            //EDIT make hide() impotent
+            colorOnShow=get();
+            drawInitial();
+            return;
+
             visible = false;
 
             $(doc).off("keydown.spectrum", onkeydown);
@@ -1012,12 +1019,12 @@
             Math.abs(dpHeight + inputHeight - extraY) : extraY));
 
         return {
-            top: offsetTop,
+            top: offsetTop+50, //EDIT adding constans
             bottom: offset.bottom,
             left: offsetLeft,
             right: offset.right,
-            width: offset.width,
-            height: offset.height
+            width: offset.width+200,
+            height: offset.height+100
         };
     }
 

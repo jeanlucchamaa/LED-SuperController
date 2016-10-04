@@ -6,7 +6,7 @@ $(".basic").spectrum({
 });
 
 $("#full").spectrum({
-    color: "#ECC",
+    color: "black",
     showInput: true,
     className: "full-spectrum",
     showInitial: true,

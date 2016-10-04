@@ -1,3 +1,8 @@
+	function sendInfo(r,g,b,s){
+		vals = 'r='+r+'&g='+g+'&b='+b+'&s='+s;
+		$.get('/apply',vals);		
+	}
+
   $( function() {
 
 	function hexFromRGB(r, g, b) {
@@ -14,11 +19,6 @@
 	  return hex.join( "" ).toUpperCase();
 	}
 
-	function sendInfo(r,g,b,s){
-		vals = 'r='+r+'&g='+g+'&b='+b+'&s='+s;
-		$.get('/apply',vals);		
-	}
-	window.sendInfo=sendInfo;
 	function refreshSwatch() {
 	  var red = $( "#red" ).slider( "value" ),
 		green = $( "#green" ).slider( "value" ),
@@ -66,6 +66,8 @@
 		$("#pane4").hide();
 		$("[role='presentation']").removeClass("active");
 		$("#b3").addClass("active");
+        $(".full-spectrum").trigger("click");
+        $(".pane > .full-spectrum").hide();
 	});
  
 	$("#b4").click( function (){
