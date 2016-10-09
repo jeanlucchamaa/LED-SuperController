@@ -1,9 +1,3 @@
-	function sendInfo(r,g,b,s){
-		vals = 'r='+r+'&g='+g+'&b='+b+'&s='+s;
-		$.get('/apply',vals);		
-	}
-
-  $(function() {
 	function hexFromRGB(r, g, b) {
 	  var hex = [
 		r.toString( 16 ),
@@ -17,27 +11,58 @@
 	  });
 	  return hex.join( "" ).toUpperCase();
 	}
+    var software=1;//use software input vs hardware
+    var inUse=false;// boolean determine if updateAll is already working, to avoid cyclic calls
+	function updateAll(r,g,b,caller){
+        if($(".ui-slider").length){ //ensure that the sliders are loaded before we manipulate them
+            if(!inUse){
+                inUse=true;//sets boolean
+                switch(caller){
+                    case 'palette':
+                        //update sliders
+                        $("#red").slider("value",r)
+                        $("#green").slider("value",g)
+                        $("#blue").slider("value",b)
+                        //update lights
+                        vals = 'r='+r+'&g='+g+'&b='+b+'&s='+software;
+                        $.get('/apply',vals);
+                        break;
+                    case 'slider':
+                        //change r,g,b from current slider values
+                        r=$("#red").slider("value")
+                        g=$("#green").slider("value")
+                        b=$("#blue").slider("value")
+                        var hexy=hexFromRGB(r,g,b);
+                        $(".sp-input").val('#'+hexy);
+                        $(".sp-input").change();
+                        vals = 'r='+r+'&g='+g+'&b='+b+'&s='+software;
+                        $.get('/apply',vals);
+                        break;
+                    case 'lights':
+                        break;
+                    default:
+                        break;
+                }
+                $( "#swatch" ).css( "background-color", "#" + hexFromRGB(r,g,b) );
+                inUse=false;
+            }
+        }
+    }     
+	
+function slideWrapper(){
+    updateAll(0,0,0,'slider');
+}
+           
+$(function() {
 
-	function refreshSwatch() {
-	  var red = $( "#red" ).slider( "value" ),
-		green = $( "#green" ).slider( "value" ),
-		blue = $( "#blue" ).slider( "value" );
-		sendInfo(red,green,blue,1);
-		hex = hexFromRGB( red, green, blue );
-	  $( "#swatch" ).css( "background-color", "#" + hex );
-	}
- 
 	$( "#red, #green, #blue" ).slider({
 	  orientation: "horizontal",
 	  range: "min",
 	  max: 255,
-	  value: 127,
-	  slide: refreshSwatch,
-	  change: refreshSwatch
+	  value: 0,
+	  slide: slideWrapper,
+	  change: slideWrapper
 	});
-	$( "#red" ).slider( "value", 0 );
-	$( "#green" ).slider( "value", 0 );
-	$( "#blue" ).slider( "value", 0 );
  
 	$("#b1").click( function (){
 		$("#pane1").show();
@@ -80,4 +105,8 @@
 	});
 
     $('#b1').trigger("click");
+      $(window).resize(function(){
+          var left=$(".sp-container").outerWidth();
+          $('.ui-slider,#swatch').css('margin-left',left+25);
+      });
   } );

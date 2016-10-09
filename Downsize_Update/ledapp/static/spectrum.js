@@ -3,6 +3,7 @@
 // Author: Brian Grinstead
 // License: MIT
 
+
 (function (factory) {
     "use strict";
 
@@ -119,7 +120,7 @@
                         "<div class='sp-alpha'><div class='sp-alpha-inner'><div class='sp-alpha-handle'></div></div></div>",
                     "</div>",
                     "<div class='sp-input-container sp-cf'>",
-                        "<input class='sp-input' type='text' spellcheck='false'  />",
+                        "<input id='inputbox' class='sp-input' type='text' spellcheck='false'  />",
                     "</div>",
                     "<div class='sp-initial sp-thumb sp-cf'></div>",
                     "<div class='sp-button-container sp-cf'>",
@@ -321,6 +322,27 @@
                 disable();
             }
 
+        function setFromTextInput() {
+
+            var value = textInput.val();
+
+            if ((value === null || value === "") && allowEmpty) {
+                set(null);
+                move();
+                updateOriginalInput();
+            }
+            else {
+                var tiny = tinycolor(value);
+                if (tiny.isValid()) {
+                    set(tiny);
+                    move();
+                    updateOriginalInput();
+                }
+                else {
+                    textInput.addClass("sp-validation-error");
+                }
+            }
+        }
             // Prevent clicks from bubbling up to document.  This would cause it to be hidden.
             container.click(stopPropagation);
 
@@ -580,28 +602,6 @@
             boundElement.trigger('dragstop.spectrum', [ get() ]);
         }
 
-        function setFromTextInput() {
-
-            var value = textInput.val();
-
-            if ((value === null || value === "") && allowEmpty) {
-                set(null);
-                move();
-                updateOriginalInput();
-            }
-            else {
-                var tiny = tinycolor(value);
-                if (tiny.isValid()) {
-                    set(tiny);
-                    move();
-                    updateOriginalInput();
-                }
-                else {
-                    textInput.addClass("sp-validation-error");
-                }
-            }
-        }
-
         function toggle() {
             if (visible) {
                 hide();
@@ -702,7 +702,6 @@
                 updateUI();
                 return;
             }
-
             var newColor, newHsv;
             if (!color && allowEmpty) {
                 isEmpty = true;
@@ -792,7 +791,7 @@
                 }
 
                 //EDIT SEND INFO
-                sendInfo(Math.round(realColor._r),Math.round(realColor._g),Math.round(realColor._b),1);
+                updateAll(Math.round(realColor._r),Math.round(realColor._g),Math.round(realColor._b),'palette');
                 if (opts.showAlpha) {
                     var rgb = realColor.toRgb();
                     rgb.a = 0;
@@ -1017,9 +1016,9 @@
         offsetTop -=
             Math.min(offsetTop, ((offsetTop + dpHeight > viewHeight && viewHeight > dpHeight) ?
             Math.abs(dpHeight + inputHeight - extraY) : extraY));
-
+            
         return {
-            top: offsetTop+50, //EDIT adding constans
+            top: 10+$("#topmenu").height(), //EDIT adding constans
             bottom: offset.bottom,
             left: offsetLeft,
             right: offset.right,
