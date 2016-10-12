@@ -1,6 +1,7 @@
 const byte numChars = 32;
 char receivedChars[numChars]; // an array to store the received data
 byte red; byte green; byte blue; // bytes are 8-bit values, 0-255 unsigned
+bool software=false;
 boolean newData = false;
 
 void apply(byte r, byte g, byte b){
@@ -19,9 +20,7 @@ void setup(){
 	pinMode(9, OUTPUT); // PWM output pins
 	pinMode(11, OUTPUT);
 	pinMode(3, OUTPUT);
-	red=50; green=50; blue=50; // visual test of succesful program launch
-
-
+	red=0; green=0; blue=0; // visual test of succesful program launch
 }
 
 void recieveCommand() {
@@ -49,21 +48,43 @@ void recieveCommand() {
 				red=r0; // if byte!=0, set values to recieved data
 				green=r1;
 				blue=r2;
+				software=true;
 			}
 			else{
-				red=analogRead(A4)/4; // if byte ==0, set tactile numbers
-				green=analogRead(A1)/4;
-				blue=analogRead(A0)/4; 
+				software=false; 
 			}
 		}
 	}
 	newData=false;
 }
 
-
 void loop(){
-
+		if(!software){
+			
+			int noOfChanges=0;
+			byte redcur=byte(analogRead(A4)/4); //assign current Red to 'cur'
+			if(abs(red-redcur)>1){ // if red changed
+				red=redcur;  // assign red
+				noOfChanges++; // prep for serial change
+			}
+			byte greencur=byte(analogRead(A1)/4);  //assign current Green to 'cur'
+			if(abs(green-greencur)>1){
+				green=greencur;
+				noOfChanges++;
+			}
+			byte bluecur=byte(analogRead(A0)/4);  //assign current Blue to 'cur'
+			if(abs(blue-bluecur)>1){ // if blue changed
+				blue=bluecur;  // assign blue
+				noOfChanges++;
+			}
+			if(noOfChanges>0){
+				// TODO make sure that we don't ship any zeros except for zero byte
+				Serial.write(min(red+1,255));
+				Serial.write(min(green+1,255));
+				Serial.write(min(blue+1,255));
+				Serial.write('\0');
+			}		
+		}
 		recieveCommand(); // recieve values and set numbers
 		apply(red,green,blue); // apply the set numbers
 }
-// TODO Create ISR's to handle changes in the pots

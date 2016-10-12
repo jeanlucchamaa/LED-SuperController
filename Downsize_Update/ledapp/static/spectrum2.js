@@ -11,10 +11,9 @@ $("#full").spectrum({
     className: "full-spectrum",
     showInitial: true,
     showPalette: true,
-    showSelectionPalette: true,
+    showSelectionPalette: false,
     maxSelectionSize: 10,
     preferredFormat: "hex",
-    localStorageKey: "spectrum.demo",
     move: function (color) {
         
     },

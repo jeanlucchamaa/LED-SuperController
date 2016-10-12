@@ -39,6 +39,12 @@
                         $.get('/apply',vals);
                         break;
                     case 'lights':
+                        var hexy=hexFromRGB(r,g,b);
+                        $(".sp-input").val('#'+hexy);
+                        $(".sp-input").change();
+                        $("#red").slider("value",r)
+                        $("#green").slider("value",g)
+                        $("#blue").slider("value",b)
                         break;
                     default:
                         break;
@@ -53,6 +59,16 @@ function slideWrapper(){
     updateAll(0,0,0,'slider');
 }
            
+function pollServerForNewInfo() {
+  	if(software==0){
+		$.getJSON('/supply', function (response) {
+            if(response.info==1){
+                updateAll(response.red,response.green,response.blue,'lights');
+		    }
+        });
+		setTimeout(pollServerForNewInfo, 15);
+	}
+  } 
 $(function() {
 
 	$( "#red, #green, #blue" ).slider({
@@ -63,7 +79,7 @@ $(function() {
 	  slide: slideWrapper,
 	  change: slideWrapper
 	});
- 
+
 	$("#b1").click( function (){
 		$("#pane1").show();
 		$("#pane2").hide();
@@ -109,4 +125,26 @@ $(function() {
           var left=$(".sp-container").outerWidth();
           $('.ui-slider,#swatch').css('margin-left',left+25);
       });
-  } );
+   // clicking software button 
+    $("#soft").click( function(){
+        software=1;
+        $("#soft").addClass('btn-primary');
+        $("#soft").removeClass('btn-default');
+        $('#hard').addClass('btn-default');
+        $('#hard').removeClass('btn-primary');
+        $('.ui-slider,.sp-container').css('pointer-events','auto');
+        updateAll(0,0,0,'slider');
+    });
+
+    $("#hard").click( function(){
+        software=0;
+        $("#hard").addClass('btn-primary');
+        $("#hard").removeClass('btn-default');
+        $('#soft').addClass('btn-default');
+        $('#soft').removeClass('btn-primary');
+        $('.ui-slider,.sp-container').css('pointer-events','none');
+        vals = 'r='+0+'&g='+0+'&b='+0+'&s='+software; //applys that trailing 0 to alert Arduino/python
+        $.get('/apply',vals); // and sends it
+		pollServerForNewInfo();
+    } );
+});
