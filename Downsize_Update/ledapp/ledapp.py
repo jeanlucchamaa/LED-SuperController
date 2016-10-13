@@ -44,4 +44,4 @@ def supplication():
         new=1
     return jsonify(red=r,green=g,blue=b,info=new)
 if __name__ == "__main__":
-    app.run(threaded=True)
+    app.run()
