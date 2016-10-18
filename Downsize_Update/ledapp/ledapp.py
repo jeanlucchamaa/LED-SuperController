@@ -7,7 +7,7 @@ def hello():
     hardware=1
     if 'ser' not in locals():
         global ser
-        ser = serial.Serial('/dev/ttyS2', 38400)
+        ser = serial.Serial('/dev/ttyUSB0', 38400)
         return render_template('ui.html')
 @app.route("/apply")
 def application():
