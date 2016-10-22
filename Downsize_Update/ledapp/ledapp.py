@@ -1,10 +1,13 @@
-import serial, time
+import serial, time, datetime
+from datetime import timedelta
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 @app.route("/")
 def hello():
     global hardware
     hardware=1
+    global on
+    on=False
     if 'ser' not in locals():
         global ser
         ser = serial.Serial('/dev/ttyUSB0', 38400)
@@ -43,5 +46,18 @@ def supplication():
         b=ba[2]-1
         new=1
     return jsonify(red=r,green=g,blue=b,info=new)
+@app.route("/nappy")
+def nappytime():
+    on=True
+    #start=int(request.args.get('start'))
+    #end=int(request.args.get('end'))
+    alarm=datetime.datetime(2016,10,19,22,39)
+    print "initialize"
+    while(on):
+        now=datetime.datetime.now()
+        delta = timedelta(alarm - now)
+        if(delta.seconds<0):
+            print "caramel"
+            break
 if __name__ == "__main__":
-    app.run()
+    app.run(processes=2)

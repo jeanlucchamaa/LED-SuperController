@@ -80,16 +80,6 @@ $(function() {
 	  change: slideWrapper
 	});
 
-	$("#b1").click( function (){
-		$("#pane1").show();
-		$("#pane2").hide();
-		$("#pane3").hide();
-		$("#pane4").hide();
-		$("[role='presentation']").removeClass("active");
-		$(".presentation").removeClass("active");
-		$("#b1").addClass("active");
-	});
- 
 	$("#b2").click( function (){
 		$("#pane1").hide();
 		$("#pane2").show();
@@ -109,18 +99,10 @@ $(function() {
 		$("#pane4").hide();
 		$("[role='presentation']").removeClass("active");
 		$("#b3").addClass("active");
-	});
- 
-	$("#b4").click( function (){
-		$("#pane1").hide();
-		$("#pane2").hide();
-		$("#pane3").hide();
-		$("#pane4").show();
-		$("[role='presentation']").removeClass("active");
-		$("#b4").addClass("active");
+        $.get('/nappy');
 	});
 
-    $('#b1').trigger("click");
+    $('#b2').trigger("click");
       $(window).resize(function(){
           var left=$(".sp-container").outerWidth();
           $('.ui-slider,#swatch').css('margin-left',left+25);
