@@ -1,267 +1,1216 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'node-inspector' ]
-2 info using npm@2.11.2
-3 info using node@v0.12.6
-4 verbose install initial load of /usr/local/lib/package.json
-5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
-6 silly cache add args [ 'node-inspector', null ]
-7 verbose cache add spec node-inspector
-8 silly cache add parsed spec { raw: 'node-inspector',
-8 silly cache add   scope: null,
-8 silly cache add   name: 'node-inspector',
-8 silly cache add   rawSpec: '',
-8 silly cache add   spec: '*',
-8 silly cache add   type: 'range' }
-9 silly addNamed node-inspector@*
-10 verbose addNamed "*" is a valid semver range for node-inspector
-11 silly addNameRange { name: 'node-inspector', range: '*', hasData: false }
-12 silly mapToRegistry name node-inspector
-13 silly mapToRegistry using default registry
-14 silly mapToRegistry registry https://registry.npmjs.org/
-15 silly mapToRegistry uri https://registry.npmjs.org/node-inspector
-16 verbose addNameRange registry:https://registry.npmjs.org/node-inspector not in flight; fetching
-17 verbose request uri https://registry.npmjs.org/node-inspector
-18 verbose request no auth needed
-19 info attempt registry request try #1 at 11:17:06
-20 verbose request id 62294f1a6ff8074a
-21 http request GET https://registry.npmjs.org/node-inspector
-22 http 200 https://registry.npmjs.org/node-inspector
-23 silly get cb [ 200,
-23 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-23 silly get     etag: '"CQ3WIEWZ0ZC8BG671PLB9G1N"',
-23 silly get     'content-type': 'application/json',
-23 silly get     'content-encoding': 'gzip',
-23 silly get     'cache-control': 'max-age=300',
-23 silly get     'content-length': '19231',
-23 silly get     'accept-ranges': 'bytes',
-23 silly get     date: 'Sun, 23 Oct 2016 18:17:09 GMT',
-23 silly get     via: '1.1 varnish',
-23 silly get     age: '246',
-23 silly get     connection: 'keep-alive',
-23 silly get     'x-served-by': 'cache-atl6251-ATL',
-23 silly get     'x-cache': 'HIT',
-23 silly get     'x-cache-hits': '1',
-23 silly get     'x-timer': 'S1477246629.422207,VS0,VE0',
-23 silly get     vary: 'Accept-Encoding' } ]
-24 verbose get saving node-inspector to /home/pi/.npm/registry.npmjs.org/node-inspector/.cache.json
-25 silly addNameRange number 2 { name: 'node-inspector', range: '*', hasData: true }
-26 silly addNameRange versions [ 'node-inspector',
-26 silly addNameRange   [ '0.0.1',
-26 silly addNameRange     '0.0.2',
-26 silly addNameRange     '0.0.3',
-26 silly addNameRange     '0.0.4',
-26 silly addNameRange     '0.1.0',
-26 silly addNameRange     '0.1.1',
-26 silly addNameRange     '0.1.2',
-26 silly addNameRange     '0.1.3',
-26 silly addNameRange     '0.1.4',
-26 silly addNameRange     '0.1.5',
-26 silly addNameRange     '0.1.6',
-26 silly addNameRange     '0.1.7',
-26 silly addNameRange     '0.1.8',
-26 silly addNameRange     '0.1.9',
-26 silly addNameRange     '0.1.10',
-26 silly addNameRange     '0.3.0',
-26 silly addNameRange     '0.3.1',
-26 silly addNameRange     '0.3.2',
-26 silly addNameRange     '0.3.3',
-26 silly addNameRange     '0.3.4',
-26 silly addNameRange     '0.4.0',
-26 silly addNameRange     '0.5.0',
-26 silly addNameRange     '0.6.0',
-26 silly addNameRange     '0.6.1',
-26 silly addNameRange     '0.6.2',
-26 silly addNameRange     '0.7.0-1',
-26 silly addNameRange     '0.2.0-beta1',
-26 silly addNameRange     '0.2.0-beta2',
-26 silly addNameRange     '0.2.0-beta3',
-26 silly addNameRange     '0.2.0-beta4',
-26 silly addNameRange     '0.3.0-preview1',
-26 silly addNameRange     '0.7.0-2',
-26 silly addNameRange     '0.7.0',
-26 silly addNameRange     '0.7.1',
-26 silly addNameRange     '0.7.2',
-26 silly addNameRange     '0.7.3',
-26 silly addNameRange     '0.7.4',
-26 silly addNameRange     '0.8.0',
-26 silly addNameRange     '0.8.1',
-26 silly addNameRange     '0.8.3',
-26 silly addNameRange     '0.9.0',
-26 silly addNameRange     '0.9.1',
-26 silly addNameRange     '0.9.2',
-26 silly addNameRange     '0.10.0',
-26 silly addNameRange     '0.10.1',
-26 silly addNameRange     '0.10.2',
-26 silly addNameRange     '0.11.0',
-26 silly addNameRange     '0.11.1',
-26 silly addNameRange     '0.11.2',
-26 silly addNameRange     '0.12.0',
-26 silly addNameRange     '0.12.1',
-26 silly addNameRange     '0.12.2',
-26 silly addNameRange     '0.12.3',
-26 silly addNameRange     '0.12.4',
-26 silly addNameRange     '0.12.5',
-26 silly addNameRange     '0.12.6',
-26 silly addNameRange     '0.12.7',
-26 silly addNameRange     '0.12.8' ] ]
-27 silly addNamed node-inspector@0.12.8
-28 verbose addNamed "0.12.8" is a plain semver version for node-inspector
-29 silly mapToRegistry name node-inspector
-30 silly mapToRegistry using default registry
-31 silly mapToRegistry registry https://registry.npmjs.org/
-32 silly mapToRegistry uri https://registry.npmjs.org/node-inspector
-33 verbose addRemoteTarball https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz not in flight; adding
-34 verbose addRemoteTarball [ 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz',
-34 verbose addRemoteTarball   'a59c3dc47cb08d15a2e526be3a1da7d64e5c227f' ]
-35 info retry fetch attempt 1 at 11:17:11
-36 info attempt registry request try #1 at 11:17:11
-37 http fetch GET https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz
-38 http fetch 200 https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz
-39 silly fetchAndShaCheck shasum a59c3dc47cb08d15a2e526be3a1da7d64e5c227f
-40 verbose addTmpTarball /tmp/npm-2161-defbd36e/registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz not in flight; adding
-41 verbose addTmpTarball already have metadata; skipping unpack for node-inspector@0.12.8
-42 silly cache afterAdd node-inspector@0.12.8
-43 verbose afterAdd /home/pi/.npm/node-inspector/0.12.8/package/package.json not in flight; writing
-44 verbose afterAdd /home/pi/.npm/node-inspector/0.12.8/package/package.json written
-45 silly install resolved [ { name: 'node-inspector',
-45 silly install resolved     version: '0.12.8',
-45 silly install resolved     description: 'Web Inspector based nodeJS debugger',
-45 silly install resolved     homepage: 'http://github.com/node-inspector/node-inspector',
-45 silly install resolved     author: { name: 'Danny Coates', email: 'dannycoates@gmail.com' },
-45 silly install resolved     keywords: [ 'debug', 'debugger', 'inspector', 'profiler' ],
-45 silly install resolved     repository:
-45 silly install resolved      { type: 'git',
-45 silly install resolved        url: 'git+ssh://git@github.com/node-inspector/node-inspector.git' },
-45 silly install resolved     engines: { node: '>=0.8.0' },
-45 silly install resolved     bin:
-45 silly install resolved      { 'node-inspector': './bin/inspector.js',
-45 silly install resolved        'node-debug': './bin/node-debug.js' },
-45 silly install resolved     dependencies:
-45 silly install resolved      { async: '~0.9',
-45 silly install resolved        'biased-opener': '~0.2.2',
-45 silly install resolved        debug: '^2.2.0',
-45 silly install resolved        express: '^4.12.3',
-45 silly install resolved        glob: '^5.0.5',
-45 silly install resolved        'path-is-absolute': '^1.0.0',
-45 silly install resolved        rc: '^1.0.1',
-45 silly install resolved        semver: '^4.3.4',
-45 silly install resolved        'serve-favicon': '^2.1.1',
-45 silly install resolved        'strong-data-uri': '^1.0.0',
-45 silly install resolved        'v8-debug': '~0.7.1',
-45 silly install resolved        'v8-profiler': '~5.6.0',
-45 silly install resolved        which: '^1.1.1',
-45 silly install resolved        ws: '^1.0.1',
-45 silly install resolved        yargs: '^3.9.0' },
-45 silly install resolved     devDependencies:
-45 silly install resolved      { promise: '^7.0.3',
-45 silly install resolved        mocha: '^1.21',
-45 silly install resolved        chai: '^2.1',
-45 silly install resolved        jshint: '^2.4.4',
-45 silly install resolved        'fs-extra': '~0.8.1' },
-45 silly install resolved     preferGlobal: true,
-45 silly install resolved     scripts:
-45 silly install resolved      { pretest: 'jshint .',
-45 silly install resolved        test: 'mocha',
-45 silly install resolved        'generate-front-end': 'node --harmony tools/generate-front-end' },
-45 silly install resolved     contributors:
-45 silly install resolved      [ [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object],
-45 silly install resolved        [Object] ],
-45 silly install resolved     gitHead: 'c2dd1eb0129d3d27528a09a8c1d0997f9485ed3c',
-45 silly install resolved     bugs: { url: 'https://github.com/node-inspector/node-inspector/issues' },
-45 silly install resolved     _id: 'node-inspector@0.12.8',
-45 silly install resolved     _shasum: 'a59c3dc47cb08d15a2e526be3a1da7d64e5c227f',
-45 silly install resolved     _from: 'node-inspector@*',
-45 silly install resolved     _npmVersion: '2.14.12',
-45 silly install resolved     _nodeVersion: '4.3.0',
-45 silly install resolved     _npmUser: { name: '3y3', email: '3y3@bk.ru' },
-45 silly install resolved     dist:
-45 silly install resolved      { shasum: 'a59c3dc47cb08d15a2e526be3a1da7d64e5c227f',
-45 silly install resolved        tarball: 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz' },
-45 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
-45 silly install resolved     _npmOperationalInternal:
-45 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
-45 silly install resolved        tmp: 'tmp/node-inspector-0.12.8.tgz_1460144653202_0.7097845498938113' },
-45 silly install resolved     directories: {},
-45 silly install resolved     _resolved: 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.12.8.tgz' } ]
-46 info install node-inspector@0.12.8 into /usr/local/lib
-47 info installOne node-inspector@0.12.8
-48 verbose installOne of node-inspector to /usr/local/lib not in flight; installing
-49 verbose lock using /home/pi/.npm/_locks/node-inspector-885d0a05b8e6718d.lock for /usr/local/lib/node_modules/node-inspector
-50 silly install write writing node-inspector 0.12.8 to /usr/local/lib/node_modules/node-inspector
-51 verbose unbuild lib/node_modules/node-inspector
-52 silly gentlyRm /usr/local/lib/node_modules/node-inspector is being purged from base /usr/local
-53 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/node-inspector
-54 verbose tar unpack /home/pi/.npm/node-inspector/0.12.8/package.tgz
-55 verbose tar unpacking to /usr/local/lib/node_modules/node-inspector
-56 silly gentlyRm /usr/local/lib/node_modules/node-inspector is being purged
-57 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/node-inspector
-58 silly gunzTarPerm modes [ '755', '644' ]
-59 error tar.unpack untar error /home/pi/.npm/node-inspector/0.12.8/package.tgz
-60 verbose unlock done using /home/pi/.npm/_locks/node-inspector-885d0a05b8e6718d.lock for /usr/local/lib/node_modules/node-inspector
-61 verbose fstream_path /usr/local/lib/node_modules/node-inspector
-62 verbose fstream_type Directory
-63 verbose fstream_class DirWriter
-64 verbose stack Error: EACCES, mkdir '/usr/local/lib/node_modules/node-inspector'
-64 verbose stack     at Error (native)
-65 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
-65 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
-65 verbose fstream_stack FSReqWrap.oncomplete (fs.js:95:15)
-66 verbose cwd /home/pi/Desktop/LED-SuperController/Downsize_Update/ledapp
-67 error Linux 4.4.21+
-68 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "node-inspector"
-69 error node v0.12.6
-70 error npm  v2.11.2
-71 error path /usr/local/lib/node_modules/node-inspector
-72 error code EACCES
-73 error errno -13
-74 error Error: EACCES, mkdir '/usr/local/lib/node_modules/node-inspector'
-74 error     at Error (native)
-74 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/node-inspector']
-74 error   errno: -13,
-74 error   code: 'EACCES',
-74 error   path: '/usr/local/lib/node_modules/node-inspector',
-74 error   fstream_type: 'Directory',
-74 error   fstream_path: '/usr/local/lib/node_modules/node-inspector',
-74 error   fstream_class: 'DirWriter',
-74 error   fstream_stack:
-74 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
-74 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
-74 error      'FSReqWrap.oncomplete (fs.js:95:15)' ] }
-75 error Please try running this command again as root/Administrator.
-76 verbose exit [ -13, true ]
-77 verbose unbuild lib/node_modules/node-inspector
-78 silly gentlyRm /usr/local/lib/node_modules/node-inspector is being purged from base /usr/local
-79 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/node-inspector
+1 verbose cli   'serialport2' ]
+2 info using npm@2.15.9
+3 info using node@v4.6.1
+4 verbose install initial load of C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\package.json
+5 warn package.json ledapp@1.0.0 No description
+6 warn package.json ledapp@1.0.0 No repository field.
+7 warn package.json ledapp@1.0.0 No README data
+8 verbose installManyTop reading scoped package data from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\express\package.json
+9 verbose installManyTop reading scoped package data from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport\package.json
+10 verbose installManyTop reading scoped package data from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\socket.io\package.json
+11 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\package.json
+12 silly cache add args [ 'serialport2', null ]
+13 verbose cache add spec serialport2
+14 silly cache add parsed spec Result {
+14 silly cache add   raw: 'serialport2',
+14 silly cache add   scope: null,
+14 silly cache add   name: 'serialport2',
+14 silly cache add   rawSpec: '',
+14 silly cache add   spec: 'latest',
+14 silly cache add   type: 'tag' }
+15 silly addNamed serialport2@latest
+16 verbose addNamed "latest" is being treated as a dist-tag for serialport2
+17 info addNameTag [ 'serialport2', 'latest' ]
+18 silly mapToRegistry name serialport2
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry data Result {
+21 silly mapToRegistry   raw: 'serialport2',
+21 silly mapToRegistry   scope: null,
+21 silly mapToRegistry   name: 'serialport2',
+21 silly mapToRegistry   rawSpec: '',
+21 silly mapToRegistry   spec: 'latest',
+21 silly mapToRegistry   type: 'tag' }
+22 silly mapToRegistry uri https://registry.npmjs.org/serialport2
+23 verbose addNameTag registry:https://registry.npmjs.org/serialport2 not in flight; fetching
+24 verbose request uri https://registry.npmjs.org/serialport2
+25 verbose request no auth needed
+26 info attempt registry request try #1 at 8:31:05 PM
+27 verbose request id 298b45652f6409ec
+28 http request GET https://registry.npmjs.org/serialport2
+29 http 200 https://registry.npmjs.org/serialport2
+30 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+30 verbose headers   etag: '"1QTVWBAEXZPKU8B7IXQUDHKUP"',
+30 verbose headers   'content-type': 'application/json',
+30 verbose headers   'content-encoding': 'gzip',
+30 verbose headers   'cache-control': 'max-age=300',
+30 verbose headers   'content-length': '2179',
+30 verbose headers   'accept-ranges': 'bytes',
+30 verbose headers   date: 'Fri, 28 Oct 2016 03:31:05 GMT',
+30 verbose headers   via: '1.1 varnish',
+30 verbose headers   age: '0',
+30 verbose headers   connection: 'keep-alive',
+30 verbose headers   'x-served-by': 'cache-ord1735-ORD',
+30 verbose headers   'x-cache': 'MISS',
+30 verbose headers   'x-cache-hits': '0',
+30 verbose headers   'x-timer': 'S1477625465.525786,VS0,VE88',
+30 verbose headers   vary: 'Accept-Encoding' }
+31 silly get cb [ 200,
+31 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+31 silly get     etag: '"1QTVWBAEXZPKU8B7IXQUDHKUP"',
+31 silly get     'content-type': 'application/json',
+31 silly get     'content-encoding': 'gzip',
+31 silly get     'cache-control': 'max-age=300',
+31 silly get     'content-length': '2179',
+31 silly get     'accept-ranges': 'bytes',
+31 silly get     date: 'Fri, 28 Oct 2016 03:31:05 GMT',
+31 silly get     via: '1.1 varnish',
+31 silly get     age: '0',
+31 silly get     connection: 'keep-alive',
+31 silly get     'x-served-by': 'cache-ord1735-ORD',
+31 silly get     'x-cache': 'MISS',
+31 silly get     'x-cache-hits': '0',
+31 silly get     'x-timer': 'S1477625465.525786,VS0,VE88',
+31 silly get     vary: 'Accept-Encoding' } ]
+32 verbose get saving serialport2 to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\serialport2\.cache.json
+33 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+34 silly addNameTag next cb for serialport2 with tag latest
+35 silly addNamed serialport2@0.0.5
+36 verbose addNamed "0.0.5" is a plain semver version for serialport2
+37 warn deprecated serialport2@0.0.5: Development has moved to serialport
+38 silly mapToRegistry name serialport2
+39 silly mapToRegistry using default registry
+40 silly mapToRegistry registry https://registry.npmjs.org/
+41 silly mapToRegistry data Result {
+41 silly mapToRegistry   raw: 'serialport2',
+41 silly mapToRegistry   scope: null,
+41 silly mapToRegistry   name: 'serialport2',
+41 silly mapToRegistry   rawSpec: '',
+41 silly mapToRegistry   spec: 'latest',
+41 silly mapToRegistry   type: 'tag' }
+42 silly mapToRegistry uri https://registry.npmjs.org/serialport2
+43 verbose addRemoteTarball https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz not in flight; adding
+44 verbose addRemoteTarball [ 'https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz',
+44 verbose addRemoteTarball   'd74af5ad22e77518c40aa9f5c58586df0d38fe17' ]
+45 info retry fetch attempt 1 at 8:31:05 PM
+46 info attempt registry request try #1 at 8:31:05 PM
+47 http fetch GET https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz
+48 http fetch 200 https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz
+49 silly fetchAndShaCheck shasum d74af5ad22e77518c40aa9f5c58586df0d38fe17
+50 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\serialport2\-\serialport2-0.0.5.tgz not in flight; adding
+51 verbose addTmpTarball already have metadata; skipping unpack for serialport2@0.0.5
+52 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+53 silly cache afterAdd serialport2@0.0.5
+54 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\serialport2\0.0.5\package\package.json not in flight; writing
+55 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+56 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\serialport2\0.0.5\package\package.json written
+57 silly install resolved [ { name: 'serialport2',
+57 silly install resolved     description: 'node.js serial port driver.',
+57 silly install resolved     author: { name: 'Joe Ferner', email: 'joe.ferner@nearinfinity.com' },
+57 silly install resolved     keywords: [ 'serial', 'serialport', 'com', 'comport', 'arduino' ],
+57 silly install resolved     version: '0.0.5',
+57 silly install resolved     engines: { node: '>=0.6.0' },
+57 silly install resolved     maintainers: [ [Object] ],
+57 silly install resolved     bugs: { url: 'https://github.com/joeferner/node-serialport2/issues' },
+57 silly install resolved     license: 'MIT',
+57 silly install resolved     repository:
+57 silly install resolved      { type: 'git',
+57 silly install resolved        url: 'git://github.com/joeferner/node-serialport2.git' },
+57 silly install resolved     dependencies:
+57 silly install resolved      { bindings: '0.3.0',
+57 silly install resolved        async: '0.1.18',
+57 silly install resolved        sf: '0.1.3',
+57 silly install resolved        optimist: '~0.3.4' },
+57 silly install resolved     devDependencies: { nodeunit: '~0.7.4' },
+57 silly install resolved     scripts: { test: 'node ./node_modules/nodeunit/bin/nodeunit test' },
+57 silly install resolved     main: './index.js',
+57 silly install resolved     bin:
+57 silly install resolved      { serialportlist: './bin/serialportList.js',
+57 silly install resolved        serialportterm: './bin/serialportTerminal.js' },
+57 silly install resolved     _npmUser: { name: 'joeferner', email: 'joe@fernsroth.com' },
+57 silly install resolved     _id: 'serialport2@0.0.5',
+57 silly install resolved     _engineSupported: true,
+57 silly install resolved     _npmVersion: '1.1.0-alpha-6',
+57 silly install resolved     _nodeVersion: 'v0.7.8',
+57 silly install resolved     _defaultsLoaded: true,
+57 silly install resolved     dist:
+57 silly install resolved      { shasum: 'd74af5ad22e77518c40aa9f5c58586df0d38fe17',
+57 silly install resolved        tarball: 'https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz' },
+57 silly install resolved     deprecated: 'Development has moved to serialport',
+57 silly install resolved     directories: {},
+57 silly install resolved     _shasum: 'd74af5ad22e77518c40aa9f5c58586df0d38fe17',
+57 silly install resolved     _resolved: 'https://registry.npmjs.org/serialport2/-/serialport2-0.0.5.tgz',
+57 silly install resolved     _from: 'serialport2@latest' } ]
+58 info install serialport2@0.0.5 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+59 info installOne serialport2@0.0.5
+60 verbose installOne of serialport2 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp not in flight; installing
+61 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+62 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\serialport2-5fc49646e2c3e9f0.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+63 silly install write writing serialport2 0.0.5 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+64 verbose unbuild node_modules\serialport2
+65 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+66 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+67 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\serialport2\0.0.5\package.tgz
+68 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+69 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 is being purged
+70 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+71 silly gunzTarPerm modes [ '777', '666' ]
+72 silly gunzTarPerm extractEntry lib/
+73 silly gunzTarPerm modified mode [ 'lib/', 493, 511 ]
+74 silly gunzTarPerm extractEntry lib/serialport.js
+75 silly gunzTarPerm modified mode [ 'lib/serialport.js', 420, 438 ]
+76 silly gunzTarPerm extractEntry test/
+77 silly gunzTarPerm modified mode [ 'test/', 493, 511 ]
+78 silly gunzTarPerm extractEntry test/arduinioEcho/
+79 silly gunzTarPerm modified mode [ 'test/arduinioEcho/', 493, 511 ]
+80 silly gunzTarPerm extractEntry test/arduinioEcho/arduinioEcho.ino
+81 silly gunzTarPerm modified mode [ 'test/arduinioEcho/arduinioEcho.ino', 420, 438 ]
+82 silly gunzTarPerm extractEntry test/echoTest.js
+83 silly gunzTarPerm modified mode [ 'test/echoTest.js', 420, 438 ]
+84 silly gunzTarPerm extractEntry .idea/
+85 silly gunzTarPerm modified mode [ '.idea/', 493, 511 ]
+86 silly gunzTarPerm extractEntry .idea/node-serialport2.iml
+87 silly gunzTarPerm modified mode [ '.idea/node-serialport2.iml', 420, 438 ]
+88 silly gunzTarPerm extractEntry .idea/misc.xml
+89 silly gunzTarPerm modified mode [ '.idea/misc.xml', 420, 438 ]
+90 silly gunzTarPerm extractEntry .idea/vcs.xml
+91 silly gunzTarPerm modified mode [ '.idea/vcs.xml', 420, 438 ]
+92 silly gunzTarPerm extractEntry .idea/workspace.xml
+93 silly gunzTarPerm modified mode [ '.idea/workspace.xml', 420, 438 ]
+94 silly gunzTarPerm extractEntry .idea/.name
+95 silly gunzTarPerm modified mode [ '.idea/.name', 420, 438 ]
+96 silly gunzTarPerm extractEntry .idea/modules.xml
+97 silly gunzTarPerm modified mode [ '.idea/modules.xml', 420, 438 ]
+98 silly gunzTarPerm extractEntry .idea/encodings.xml
+99 silly gunzTarPerm modified mode [ '.idea/encodings.xml', 420, 438 ]
+100 silly gunzTarPerm extractEntry .idea/scopes/
+101 silly gunzTarPerm modified mode [ '.idea/scopes/', 493, 511 ]
+102 silly gunzTarPerm extractEntry .idea/scopes/scope_settings.xml
+103 silly gunzTarPerm modified mode [ '.idea/scopes/scope_settings.xml', 420, 438 ]
+104 silly gunzTarPerm extractEntry binding.gyp
+105 silly gunzTarPerm modified mode [ 'binding.gyp', 420, 438 ]
+106 silly gunzTarPerm extractEntry src/
+107 silly gunzTarPerm modified mode [ 'src/', 493, 511 ]
+108 silly gunzTarPerm extractEntry src/serialport.cpp
+109 silly gunzTarPerm modified mode [ 'src/serialport.cpp', 420, 438 ]
+110 silly gunzTarPerm extractEntry src/win/
+111 silly gunzTarPerm modified mode [ 'src/win/', 493, 511 ]
+112 silly gunzTarPerm extractEntry src/win/disphelper.h
+113 silly gunzTarPerm modified mode [ 'src/win/disphelper.h', 420, 438 ]
+114 silly gunzTarPerm extractEntry src/win/disphelper.c
+115 silly gunzTarPerm modified mode [ 'src/win/disphelper.c', 420, 438 ]
+116 silly gunzTarPerm extractEntry src/serialport_unix.cpp
+117 silly gunzTarPerm modified mode [ 'src/serialport_unix.cpp', 420, 438 ]
+118 silly gunzTarPerm extractEntry src/serialport.h
+119 silly gunzTarPerm modified mode [ 'src/serialport.h', 420, 438 ]
+120 silly gunzTarPerm extractEntry src/serialport_win.cpp
+121 silly gunzTarPerm modified mode [ 'src/serialport_win.cpp', 420, 438 ]
+122 silly gunzTarPerm extractEntry .gitignore
+123 silly gunzTarPerm modified mode [ '.gitignore', 420, 438 ]
+124 silly gunzTarPerm extractEntry index.js
+125 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+126 silly gunzTarPerm extractEntry bin/
+127 silly gunzTarPerm modified mode [ 'bin/', 493, 511 ]
+128 silly gunzTarPerm extractEntry bin/serialportList.js
+129 silly gunzTarPerm modified mode [ 'bin/serialportList.js', 493, 511 ]
+130 silly gunzTarPerm extractEntry bin/serialportTerminal.js
+131 silly gunzTarPerm modified mode [ 'bin/serialportTerminal.js', 493, 511 ]
+132 silly gunzTarPerm extractEntry package.json
+133 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+134 silly gunzTarPerm extractEntry README.md
+135 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+136 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\package.json
+137 info preinstall serialport2@0.0.5
+138 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\package.json
+139 silly prepareForInstallMany adding bindings@0.3.0 from serialport2 dependencies
+140 silly prepareForInstallMany adding async@0.1.18 from serialport2 dependencies
+141 silly prepareForInstallMany adding sf@0.1.3 from serialport2 dependencies
+142 silly prepareForInstallMany adding optimist@~0.3.4 from serialport2 dependencies
+143 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\package.json
+144 silly cache add args [ 'bindings@0.3.0', null ]
+145 verbose cache add spec bindings@0.3.0
+146 silly cache add args [ 'async@0.1.18', null ]
+147 verbose cache add spec async@0.1.18
+148 silly cache add parsed spec Result {
+148 silly cache add   raw: 'bindings@0.3.0',
+148 silly cache add   scope: null,
+148 silly cache add   name: 'bindings',
+148 silly cache add   rawSpec: '0.3.0',
+148 silly cache add   spec: '0.3.0',
+148 silly cache add   type: 'version' }
+149 silly addNamed bindings@0.3.0
+150 verbose addNamed "0.3.0" is a plain semver version for bindings
+151 silly mapToRegistry name bindings
+152 silly mapToRegistry using default registry
+153 silly mapToRegistry registry https://registry.npmjs.org/
+154 silly mapToRegistry data Result {
+154 silly mapToRegistry   raw: 'bindings',
+154 silly mapToRegistry   scope: null,
+154 silly mapToRegistry   name: 'bindings',
+154 silly mapToRegistry   rawSpec: '',
+154 silly mapToRegistry   spec: 'latest',
+154 silly mapToRegistry   type: 'tag' }
+155 silly mapToRegistry uri https://registry.npmjs.org/bindings
+156 verbose addNameVersion registry:https://registry.npmjs.org/bindings not in flight; fetching
+157 silly cache add parsed spec Result {
+157 silly cache add   raw: 'async@0.1.18',
+157 silly cache add   scope: null,
+157 silly cache add   name: 'async',
+157 silly cache add   rawSpec: '0.1.18',
+157 silly cache add   spec: '0.1.18',
+157 silly cache add   type: 'version' }
+158 silly addNamed async@0.1.18
+159 verbose addNamed "0.1.18" is a plain semver version for async
+160 silly mapToRegistry name async
+161 silly mapToRegistry using default registry
+162 silly mapToRegistry registry https://registry.npmjs.org/
+163 silly mapToRegistry data Result {
+163 silly mapToRegistry   raw: 'async',
+163 silly mapToRegistry   scope: null,
+163 silly mapToRegistry   name: 'async',
+163 silly mapToRegistry   rawSpec: '',
+163 silly mapToRegistry   spec: 'latest',
+163 silly mapToRegistry   type: 'tag' }
+164 silly mapToRegistry uri https://registry.npmjs.org/async
+165 verbose addNameVersion registry:https://registry.npmjs.org/async not in flight; fetching
+166 silly cache add args [ 'sf@0.1.3', null ]
+167 verbose cache add spec sf@0.1.3
+168 silly cache add parsed spec Result {
+168 silly cache add   raw: 'sf@0.1.3',
+168 silly cache add   scope: null,
+168 silly cache add   name: 'sf',
+168 silly cache add   rawSpec: '0.1.3',
+168 silly cache add   spec: '0.1.3',
+168 silly cache add   type: 'version' }
+169 silly addNamed sf@0.1.3
+170 verbose addNamed "0.1.3" is a plain semver version for sf
+171 silly mapToRegistry name sf
+172 silly mapToRegistry using default registry
+173 silly mapToRegistry registry https://registry.npmjs.org/
+174 silly mapToRegistry data Result {
+174 silly mapToRegistry   raw: 'sf',
+174 silly mapToRegistry   scope: null,
+174 silly mapToRegistry   name: 'sf',
+174 silly mapToRegistry   rawSpec: '',
+174 silly mapToRegistry   spec: 'latest',
+174 silly mapToRegistry   type: 'tag' }
+175 silly mapToRegistry uri https://registry.npmjs.org/sf
+176 verbose addNameVersion registry:https://registry.npmjs.org/sf not in flight; fetching
+177 silly cache add args [ 'optimist@~0.3.4', null ]
+178 verbose cache add spec optimist@~0.3.4
+179 silly cache add parsed spec Result {
+179 silly cache add   raw: 'optimist@~0.3.4',
+179 silly cache add   scope: null,
+179 silly cache add   name: 'optimist',
+179 silly cache add   rawSpec: '~0.3.4',
+179 silly cache add   spec: '>=0.3.4 <0.4.0',
+179 silly cache add   type: 'range' }
+180 silly addNamed optimist@>=0.3.4 <0.4.0
+181 verbose addNamed ">=0.3.4 <0.4.0" is a valid semver range for optimist
+182 silly addNameRange { name: 'optimist', range: '>=0.3.4 <0.4.0', hasData: false }
+183 silly mapToRegistry name optimist
+184 silly mapToRegistry using default registry
+185 silly mapToRegistry registry https://registry.npmjs.org/
+186 silly mapToRegistry data Result {
+186 silly mapToRegistry   raw: 'optimist',
+186 silly mapToRegistry   scope: null,
+186 silly mapToRegistry   name: 'optimist',
+186 silly mapToRegistry   rawSpec: '',
+186 silly mapToRegistry   spec: 'latest',
+186 silly mapToRegistry   type: 'tag' }
+187 silly mapToRegistry uri https://registry.npmjs.org/optimist
+188 verbose addNameRange registry:https://registry.npmjs.org/optimist not in flight; fetching
+189 verbose request uri https://registry.npmjs.org/sf
+190 verbose request no auth needed
+191 info attempt registry request try #1 at 8:31:06 PM
+192 http request GET https://registry.npmjs.org/sf
+193 verbose request uri https://registry.npmjs.org/optimist
+194 verbose request no auth needed
+195 info attempt registry request try #1 at 8:31:06 PM
+196 http request GET https://registry.npmjs.org/optimist
+197 verbose request uri https://registry.npmjs.org/bindings
+198 verbose request no auth needed
+199 info attempt registry request try #1 at 8:31:06 PM
+200 verbose etag "8QW29MHCPCE6VJCVI3QVXRJAQ"
+201 http request GET https://registry.npmjs.org/bindings
+202 verbose request uri https://registry.npmjs.org/async
+203 verbose request no auth needed
+204 info attempt registry request try #1 at 8:31:06 PM
+205 verbose etag "CFFK9V4W2RIT7DIAYQ74AMGO7"
+206 http request GET https://registry.npmjs.org/async
+207 http 200 https://registry.npmjs.org/optimist
+208 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+208 verbose headers   etag: '"8ZDPHXL00R9UQVIVA976647Y0"',
+208 verbose headers   'content-type': 'application/json',
+208 verbose headers   'content-encoding': 'gzip',
+208 verbose headers   'cache-control': 'max-age=300',
+208 verbose headers   'content-length': '9316',
+208 verbose headers   'accept-ranges': 'bytes',
+208 verbose headers   date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+208 verbose headers   via: '1.1 varnish',
+208 verbose headers   age: '177',
+208 verbose headers   connection: 'keep-alive',
+208 verbose headers   'x-served-by': 'cache-ord1742-ORD',
+208 verbose headers   'x-cache': 'HIT',
+208 verbose headers   'x-cache-hits': '5',
+208 verbose headers   'x-timer': 'S1477625466.599959,VS0,VE0',
+208 verbose headers   vary: 'Accept-Encoding' }
+209 silly get cb [ 200,
+209 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+209 silly get     etag: '"8ZDPHXL00R9UQVIVA976647Y0"',
+209 silly get     'content-type': 'application/json',
+209 silly get     'content-encoding': 'gzip',
+209 silly get     'cache-control': 'max-age=300',
+209 silly get     'content-length': '9316',
+209 silly get     'accept-ranges': 'bytes',
+209 silly get     date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+209 silly get     via: '1.1 varnish',
+209 silly get     age: '177',
+209 silly get     connection: 'keep-alive',
+209 silly get     'x-served-by': 'cache-ord1742-ORD',
+209 silly get     'x-cache': 'HIT',
+209 silly get     'x-cache-hits': '5',
+209 silly get     'x-timer': 'S1477625466.599959,VS0,VE0',
+209 silly get     vary: 'Accept-Encoding' } ]
+210 verbose get saving optimist to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\optimist\.cache.json
+211 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+212 silly addNameRange number 2 { name: 'optimist', range: '>=0.3.4 <0.4.0', hasData: true }
+213 silly addNameRange versions [ 'optimist',
+213 silly addNameRange   [ '0.0.1',
+213 silly addNameRange     '0.0.2',
+213 silly addNameRange     '0.0.4',
+213 silly addNameRange     '0.0.5',
+213 silly addNameRange     '0.0.6',
+213 silly addNameRange     '0.0.7',
+213 silly addNameRange     '0.1.0',
+213 silly addNameRange     '0.1.1',
+213 silly addNameRange     '0.1.2',
+213 silly addNameRange     '0.1.3',
+213 silly addNameRange     '0.1.4',
+213 silly addNameRange     '0.1.5',
+213 silly addNameRange     '0.1.6',
+213 silly addNameRange     '0.1.7',
+213 silly addNameRange     '0.1.8',
+213 silly addNameRange     '0.1.9',
+213 silly addNameRange     '0.0.3',
+213 silly addNameRange     '0.2.0',
+213 silly addNameRange     '0.2.1',
+213 silly addNameRange     '0.2.2',
+213 silly addNameRange     '0.2.3',
+213 silly addNameRange     '0.2.4',
+213 silly addNameRange     '0.2.5',
+213 silly addNameRange     '0.2.6',
+213 silly addNameRange     '0.2.7',
+213 silly addNameRange     '0.2.8',
+213 silly addNameRange     '0.3.0',
+213 silly addNameRange     '0.3.1',
+213 silly addNameRange     '0.3.3',
+213 silly addNameRange     '0.3.4',
+213 silly addNameRange     '0.3.5',
+213 silly addNameRange     '0.3.6',
+213 silly addNameRange     '0.3.7',
+213 silly addNameRange     '0.4.0',
+213 silly addNameRange     '0.5.0',
+213 silly addNameRange     '0.5.1',
+213 silly addNameRange     '0.5.2',
+213 silly addNameRange     '0.6.0',
+213 silly addNameRange     '0.6.1' ] ]
+214 silly addNamed optimist@0.3.7
+215 verbose addNamed "0.3.7" is a plain semver version for optimist
+216 silly mapToRegistry name optimist
+217 silly mapToRegistry using default registry
+218 silly mapToRegistry registry https://registry.npmjs.org/
+219 silly mapToRegistry data Result {
+219 silly mapToRegistry   raw: 'optimist',
+219 silly mapToRegistry   scope: null,
+219 silly mapToRegistry   name: 'optimist',
+219 silly mapToRegistry   rawSpec: '',
+219 silly mapToRegistry   spec: 'latest',
+219 silly mapToRegistry   type: 'tag' }
+220 silly mapToRegistry uri https://registry.npmjs.org/optimist
+221 verbose addRemoteTarball https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz not in flight; adding
+222 verbose addRemoteTarball [ 'https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz',
+222 verbose addRemoteTarball   'c90941ad59e4273328923074d2cf2e7cbc6ec0d9' ]
+223 info retry fetch attempt 1 at 8:31:06 PM
+224 info attempt registry request try #1 at 8:31:06 PM
+225 http fetch GET https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz
+226 http 304 https://registry.npmjs.org/bindings
+227 verbose headers { date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+227 verbose headers   via: '1.1 varnish',
+227 verbose headers   'cache-control': 'max-age=300',
+227 verbose headers   etag: '"8QW29MHCPCE6VJCVI3QVXRJAQ"',
+227 verbose headers   age: '99',
+227 verbose headers   connection: 'keep-alive',
+227 verbose headers   'x-served-by': 'cache-ord1725-ORD',
+227 verbose headers   'x-cache': 'HIT',
+227 verbose headers   'x-cache-hits': '1',
+227 verbose headers   'x-timer': 'S1477625466.617237,VS0,VE0',
+227 verbose headers   vary: 'Accept-Encoding' }
+228 silly get cb [ 304,
+228 silly get   { date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+228 silly get     via: '1.1 varnish',
+228 silly get     'cache-control': 'max-age=300',
+228 silly get     etag: '"8QW29MHCPCE6VJCVI3QVXRJAQ"',
+228 silly get     age: '99',
+228 silly get     connection: 'keep-alive',
+228 silly get     'x-served-by': 'cache-ord1725-ORD',
+228 silly get     'x-cache': 'HIT',
+228 silly get     'x-cache-hits': '1',
+228 silly get     'x-timer': 'S1477625466.617237,VS0,VE0',
+228 silly get     vary: 'Accept-Encoding' } ]
+229 verbose etag https://registry.npmjs.org/bindings from cache
+230 verbose get saving bindings to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\bindings\.cache.json
+231 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+232 silly mapToRegistry name bindings
+233 silly mapToRegistry using default registry
+234 silly mapToRegistry registry https://registry.npmjs.org/
+235 silly mapToRegistry data Result {
+235 silly mapToRegistry   raw: 'bindings',
+235 silly mapToRegistry   scope: null,
+235 silly mapToRegistry   name: 'bindings',
+235 silly mapToRegistry   rawSpec: '',
+235 silly mapToRegistry   spec: 'latest',
+235 silly mapToRegistry   type: 'tag' }
+236 silly mapToRegistry uri https://registry.npmjs.org/bindings
+237 verbose addRemoteTarball https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz not in flight; adding
+238 verbose addRemoteTarball [ 'https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz',
+238 verbose addRemoteTarball   '2d01b7061ca312c6600c9b512404fd3ef99c06f3' ]
+239 info retry fetch attempt 1 at 8:31:06 PM
+240 info attempt registry request try #1 at 8:31:06 PM
+241 http fetch GET https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz
+242 http 200 https://registry.npmjs.org/sf
+243 verbose headers { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+243 verbose headers   etag: '"18YCYRQVZMFUSUJEQ9LVIUD85"',
+243 verbose headers   'content-type': 'application/json',
+243 verbose headers   'content-encoding': 'gzip',
+243 verbose headers   'cache-control': 'max-age=300',
+243 verbose headers   'content-length': '3611',
+243 verbose headers   'accept-ranges': 'bytes',
+243 verbose headers   date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+243 verbose headers   via: '1.1 varnish',
+243 verbose headers   age: '0',
+243 verbose headers   connection: 'keep-alive',
+243 verbose headers   'x-served-by': 'cache-ord1735-ORD',
+243 verbose headers   'x-cache': 'HIT',
+243 verbose headers   'x-cache-hits': '1',
+243 verbose headers   'x-timer': 'S1477625466.300771,VS0,VE345',
+243 verbose headers   vary: 'Accept-Encoding' }
+244 silly get cb [ 200,
+244 silly get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+244 silly get     etag: '"18YCYRQVZMFUSUJEQ9LVIUD85"',
+244 silly get     'content-type': 'application/json',
+244 silly get     'content-encoding': 'gzip',
+244 silly get     'cache-control': 'max-age=300',
+244 silly get     'content-length': '3611',
+244 silly get     'accept-ranges': 'bytes',
+244 silly get     date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+244 silly get     via: '1.1 varnish',
+244 silly get     age: '0',
+244 silly get     connection: 'keep-alive',
+244 silly get     'x-served-by': 'cache-ord1735-ORD',
+244 silly get     'x-cache': 'HIT',
+244 silly get     'x-cache-hits': '1',
+244 silly get     'x-timer': 'S1477625466.300771,VS0,VE345',
+244 silly get     vary: 'Accept-Encoding' } ]
+245 verbose get saving sf to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\sf\.cache.json
+246 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+247 silly mapToRegistry name sf
+248 silly mapToRegistry using default registry
+249 silly mapToRegistry registry https://registry.npmjs.org/
+250 silly mapToRegistry data Result {
+250 silly mapToRegistry   raw: 'sf',
+250 silly mapToRegistry   scope: null,
+250 silly mapToRegistry   name: 'sf',
+250 silly mapToRegistry   rawSpec: '',
+250 silly mapToRegistry   spec: 'latest',
+250 silly mapToRegistry   type: 'tag' }
+251 silly mapToRegistry uri https://registry.npmjs.org/sf
+252 verbose addRemoteTarball https://registry.npmjs.org/sf/-/sf-0.1.3.tgz not in flight; adding
+253 verbose addRemoteTarball [ 'https://registry.npmjs.org/sf/-/sf-0.1.3.tgz',
+253 verbose addRemoteTarball   'a5d246148241ace3788447f6a9a95b564762c354' ]
+254 info retry fetch attempt 1 at 8:31:06 PM
+255 info attempt registry request try #1 at 8:31:06 PM
+256 http fetch GET https://registry.npmjs.org/sf/-/sf-0.1.3.tgz
+257 http 200 https://registry.npmjs.org/async
+258 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+258 verbose headers   etag: '"8EQJAW8REJ7BFQRI86EA59PYI"',
+258 verbose headers   'content-type': 'application/json',
+258 verbose headers   'content-encoding': 'gzip',
+258 verbose headers   'cache-control': 'max-age=300',
+258 verbose headers   'content-length': '17851',
+258 verbose headers   'accept-ranges': 'bytes',
+258 verbose headers   date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+258 verbose headers   via: '1.1 varnish',
+258 verbose headers   age: '141',
+258 verbose headers   connection: 'keep-alive',
+258 verbose headers   'x-served-by': 'cache-ord1743-ORD',
+258 verbose headers   'x-cache': 'HIT',
+258 verbose headers   'x-cache-hits': '5',
+258 verbose headers   'x-timer': 'S1477625466.584635,VS0,VE0',
+258 verbose headers   vary: 'Accept-Encoding' }
+259 silly get cb [ 200,
+259 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+259 silly get     etag: '"8EQJAW8REJ7BFQRI86EA59PYI"',
+259 silly get     'content-type': 'application/json',
+259 silly get     'content-encoding': 'gzip',
+259 silly get     'cache-control': 'max-age=300',
+259 silly get     'content-length': '17851',
+259 silly get     'accept-ranges': 'bytes',
+259 silly get     date: 'Fri, 28 Oct 2016 03:31:06 GMT',
+259 silly get     via: '1.1 varnish',
+259 silly get     age: '141',
+259 silly get     connection: 'keep-alive',
+259 silly get     'x-served-by': 'cache-ord1743-ORD',
+259 silly get     'x-cache': 'HIT',
+259 silly get     'x-cache-hits': '5',
+259 silly get     'x-timer': 'S1477625466.584635,VS0,VE0',
+259 silly get     vary: 'Accept-Encoding' } ]
+260 verbose get saving async to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\async\.cache.json
+261 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+262 silly mapToRegistry name async
+263 silly mapToRegistry using default registry
+264 silly mapToRegistry registry https://registry.npmjs.org/
+265 silly mapToRegistry data Result {
+265 silly mapToRegistry   raw: 'async',
+265 silly mapToRegistry   scope: null,
+265 silly mapToRegistry   name: 'async',
+265 silly mapToRegistry   rawSpec: '',
+265 silly mapToRegistry   spec: 'latest',
+265 silly mapToRegistry   type: 'tag' }
+266 silly mapToRegistry uri https://registry.npmjs.org/async
+267 verbose addRemoteTarball https://registry.npmjs.org/async/-/async-0.1.18.tgz not in flight; adding
+268 verbose addRemoteTarball [ 'https://registry.npmjs.org/async/-/async-0.1.18.tgz',
+268 verbose addRemoteTarball   'c59c923920b76d5bf23248c04433920c4d45086a' ]
+269 info retry fetch attempt 1 at 8:31:06 PM
+270 info attempt registry request try #1 at 8:31:06 PM
+271 http fetch GET https://registry.npmjs.org/async/-/async-0.1.18.tgz
+272 http fetch 200 https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz
+273 silly fetchAndShaCheck shasum c90941ad59e4273328923074d2cf2e7cbc6ec0d9
+274 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\optimist\-\optimist-0.3.7.tgz not in flight; adding
+275 verbose addTmpTarball already have metadata; skipping unpack for optimist@0.3.7
+276 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+277 silly cache afterAdd optimist@0.3.7
+278 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\optimist\0.3.7\package\package.json not in flight; writing
+279 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+280 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\optimist\0.3.7\package\package.json written
+281 http fetch 200 https://registry.npmjs.org/async/-/async-0.1.18.tgz
+282 silly fetchAndShaCheck shasum c59c923920b76d5bf23248c04433920c4d45086a
+283 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\async\-\async-0.1.18.tgz not in flight; adding
+284 verbose addTmpTarball already have metadata; skipping unpack for async@0.1.18
+285 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+286 silly cache afterAdd async@0.1.18
+287 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\async\0.1.18\package\package.json not in flight; writing
+288 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+289 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\async\0.1.18\package\package.json written
+290 http fetch 200 https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz
+291 silly fetchAndShaCheck shasum 2d01b7061ca312c6600c9b512404fd3ef99c06f3
+292 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\bindings\-\bindings-0.3.0.tgz not in flight; adding
+293 verbose addTmpTarball already have metadata; skipping unpack for bindings@0.3.0
+294 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+295 silly cache afterAdd bindings@0.3.0
+296 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\bindings\0.3.0\package\package.json not in flight; writing
+297 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+298 http fetch 200 https://registry.npmjs.org/sf/-/sf-0.1.3.tgz
+299 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\bindings\0.3.0\package\package.json written
+300 silly fetchAndShaCheck shasum a5d246148241ace3788447f6a9a95b564762c354
+301 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\sf\-\sf-0.1.3.tgz not in flight; adding
+302 verbose addTmpTarball already have metadata; skipping unpack for sf@0.1.3
+303 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+304 silly cache afterAdd sf@0.1.3
+305 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\sf\0.1.3\package\package.json not in flight; writing
+306 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+307 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\sf\0.1.3\package\package.json written
+308 silly install resolved [ { name: 'optimist',
+308 silly install resolved     version: '0.3.7',
+308 silly install resolved     description: 'Light-weight option parsing with an argv hash. No optstrings attached.',
+308 silly install resolved     main: './index.js',
+308 silly install resolved     dependencies: { wordwrap: '~0.0.2' },
+308 silly install resolved     devDependencies: { hashish: '~0.0.4', tap: '~0.4.0' },
+308 silly install resolved     scripts: { test: 'tap ./test/*.js' },
+308 silly install resolved     repository:
+308 silly install resolved      { type: 'git',
+308 silly install resolved        url: 'http://github.com/substack/node-optimist.git' },
+308 silly install resolved     keywords:
+308 silly install resolved      [ 'argument',
+308 silly install resolved        'args',
+308 silly install resolved        'option',
+308 silly install resolved        'parser',
+308 silly install resolved        'parsing',
+308 silly install resolved        'cli',
+308 silly install resolved        'command' ],
+308 silly install resolved     author:
+308 silly install resolved      { name: 'James Halliday',
+308 silly install resolved        email: 'mail@substack.net',
+308 silly install resolved        url: 'http://substack.net' },
+308 silly install resolved     license: 'MIT/X11',
+308 silly install resolved     engine: { node: '>=0.4' },
+308 silly install resolved     _id: 'optimist@0.3.7',
+308 silly install resolved     dist:
+308 silly install resolved      { shasum: 'c90941ad59e4273328923074d2cf2e7cbc6ec0d9',
+308 silly install resolved        tarball: 'https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz' },
+308 silly install resolved     _from: 'optimist@>=0.3.4 <0.4.0',
+308 silly install resolved     _npmVersion: '1.2.2',
+308 silly install resolved     _npmUser: { name: 'substack', email: 'mail@substack.net' },
+308 silly install resolved     maintainers: [ [Object] ],
+308 silly install resolved     directories: {},
+308 silly install resolved     _shasum: 'c90941ad59e4273328923074d2cf2e7cbc6ec0d9',
+308 silly install resolved     _resolved: 'https://registry.npmjs.org/optimist/-/optimist-0.3.7.tgz' },
+308 silly install resolved   { name: 'async',
+308 silly install resolved     description: 'Higher-order functions and common patterns for asynchronous code',
+308 silly install resolved     main: './index',
+308 silly install resolved     author: { name: 'Caolan McMahon' },
+308 silly install resolved     version: '0.1.18',
+308 silly install resolved     repository: { type: 'git', url: 'git://github.com/caolan/async.git' },
+308 silly install resolved     bugs: { url: 'http://github.com/caolan/async/issues' },
+308 silly install resolved     licenses: [ [Object] ],
+308 silly install resolved     devDependencies: { nodeunit: '>0.0.0', 'uglify-js': '1.2.x', nodelint: '>0.0.0' },
+308 silly install resolved     _npmUser: { name: 'caolan', email: 'caolan@caolanmcmahon.com' },
+308 silly install resolved     _id: 'async@0.1.18',
+308 silly install resolved     dependencies: {},
+308 silly install resolved     optionalDependencies: {},
+308 silly install resolved     engines: { node: '*' },
+308 silly install resolved     _engineSupported: true,
+308 silly install resolved     _npmVersion: '1.1.1',
+308 silly install resolved     _nodeVersion: 'v0.6.11',
+308 silly install resolved     _defaultsLoaded: true,
+308 silly install resolved     dist:
+308 silly install resolved      { shasum: 'c59c923920b76d5bf23248c04433920c4d45086a',
+308 silly install resolved        tarball: 'https://registry.npmjs.org/async/-/async-0.1.18.tgz' },
+308 silly install resolved     maintainers: [ [Object] ],
+308 silly install resolved     directories: {},
+308 silly install resolved     _shasum: 'c59c923920b76d5bf23248c04433920c4d45086a',
+308 silly install resolved     _resolved: 'https://registry.npmjs.org/async/-/async-0.1.18.tgz',
+308 silly install resolved     _from: 'async@0.1.18' },
+308 silly install resolved   { name: 'bindings',
+308 silly install resolved     description: 'Helper module for loading your native module\'s bindings in a cross-platform way',
+308 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp' ],
+308 silly install resolved     version: '0.3.0',
+308 silly install resolved     author:
+308 silly install resolved      { name: 'Nathan Rajlich',
+308 silly install resolved        email: 'nathan@tootallnate.net',
+308 silly install resolved        url: 'http://tootallnate.net' },
+308 silly install resolved     repository:
+308 silly install resolved      { type: 'git',
+308 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+308 silly install resolved     main: './bindings.js',
+308 silly install resolved     engines: { node: '*' },
+308 silly install resolved     _npmUser: { name: 'TooTallNate', email: 'nathan@tootallnate.net' },
+308 silly install resolved     _id: 'bindings@0.3.0',
+308 silly install resolved     dependencies: {},
+308 silly install resolved     devDependencies: {},
+308 silly install resolved     optionalDependencies: {},
+308 silly install resolved     _engineSupported: true,
+308 silly install resolved     _npmVersion: '1.1.1',
+308 silly install resolved     _nodeVersion: 'v0.6.11',
+308 silly install resolved     _defaultsLoaded: true,
+308 silly install resolved     dist:
+308 silly install resolved      { shasum: '2d01b7061ca312c6600c9b512404fd3ef99c06f3',
+308 silly install resolved        tarball: 'https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz' },
+308 silly install resolved     maintainers: [ [Object] ],
+308 silly install resolved     directories: {},
+308 silly install resolved     _shasum: '2d01b7061ca312c6600c9b512404fd3ef99c06f3',
+308 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-0.3.0.tgz',
+308 silly install resolved     _from: 'bindings@0.3.0' },
+308 silly install resolved   { name: 'sf',
+308 silly install resolved     description: 'String formatting library for node.js',
+308 silly install resolved     author: { name: 'Joe Ferner', email: 'joe.ferner@nearinfinity.com' },
+308 silly install resolved     keywords: [ 'string', 'format', 'template' ],
+308 silly install resolved     version: '0.1.3',
+308 silly install resolved     engines: { node: '>=0.6.0' },
+308 silly install resolved     maintainers: [ [Object] ],
+308 silly install resolved     bugs: { url: 'https://github.com/nearinfinity/node-sf/issues' },
+308 silly install resolved     license: 'MIT',
+308 silly install resolved     repository:
+308 silly install resolved      { type: 'git',
+308 silly install resolved        url: 'git://github.com/nearinfinity/node-sf.git' },
+308 silly install resolved     devDependencies: { nodeunit: '~0.7.3' },
+308 silly install resolved     scripts: { test: 'nodeunit test' },
+308 silly install resolved     main: './index.js',
+308 silly install resolved     _npmUser: { name: 'joeferner', email: 'joe@fernsroth.com' },
+308 silly install resolved     _id: 'sf@0.1.3',
+308 silly install resolved     dependencies: {},
+308 silly install resolved     optionalDependencies: {},
+308 silly install resolved     _engineSupported: true,
+308 silly install resolved     _npmVersion: '1.1.4',
+308 silly install resolved     _nodeVersion: 'v0.7.7',
+308 silly install resolved     _defaultsLoaded: true,
+308 silly install resolved     dist:
+308 silly install resolved      { shasum: 'a5d246148241ace3788447f6a9a95b564762c354',
+308 silly install resolved        tarball: 'https://registry.npmjs.org/sf/-/sf-0.1.3.tgz' },
+308 silly install resolved     directories: {},
+308 silly install resolved     _shasum: 'a5d246148241ace3788447f6a9a95b564762c354',
+308 silly install resolved     _resolved: 'https://registry.npmjs.org/sf/-/sf-0.1.3.tgz',
+308 silly install resolved     _from: 'sf@0.1.3' } ]
+309 info install optimist@0.3.7 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+310 info install async@0.1.18 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+311 info install bindings@0.3.0 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+312 info install sf@0.1.3 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+313 info installOne optimist@0.3.7
+314 verbose installOne of optimist to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 not in flight; installing
+315 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+316 info installOne async@0.1.18
+317 verbose installOne of async to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 not in flight; installing
+318 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+319 info installOne bindings@0.3.0
+320 verbose installOne of bindings to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 not in flight; installing
+321 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+322 info installOne sf@0.1.3
+323 verbose installOne of sf to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 not in flight; installing
+324 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+325 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\optimist-8192db89de07b7a0.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+326 silly install write writing optimist 0.3.7 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+327 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\bindings-a8d37b1bcce4b5fd.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+328 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\async-9306e47cb965bbe5.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+329 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\sf-07847029138f1acc.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+330 silly install write writing bindings 0.3.0 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+331 silly install write writing async 0.1.18 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+332 silly install write writing sf 0.1.3 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+333 verbose unbuild node_modules\serialport2\node_modules\optimist
+334 verbose unbuild node_modules\serialport2\node_modules\bindings
+335 verbose unbuild node_modules\serialport2\node_modules\async
+336 verbose unbuild node_modules\serialport2\node_modules\sf
+337 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+338 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+339 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\optimist\0.3.7\package.tgz
+340 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+341 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist is being purged
+342 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+343 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+344 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+345 silly gunzTarPerm modes [ '777', '666' ]
+346 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\bindings\0.3.0\package.tgz
+347 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+348 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings is being purged
+349 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+350 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+351 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+352 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+353 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+354 silly gunzTarPerm modes [ '777', '666' ]
+355 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\async\0.1.18\package.tgz
+356 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+357 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async is being purged
+358 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+359 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\sf\0.1.3\package.tgz
+360 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+361 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf is being purged
+362 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+363 silly gunzTarPerm modes [ '777', '666' ]
+364 silly gunzTarPerm modes [ '777', '666' ]
+365 silly gunzTarPerm extractEntry package.json
+366 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+367 silly gunzTarPerm extractEntry bindings.js
+368 silly gunzTarPerm modified mode [ 'bindings.js', 420, 438 ]
+369 silly gunzTarPerm extractEntry .npmignore
+370 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+371 silly gunzTarPerm extractEntry README.md
+372 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+373 silly gunzTarPerm extractEntry LICENSE
+374 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+375 silly gunzTarPerm extractEntry index.js
+376 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+377 silly gunzTarPerm extractEntry package.json
+378 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+379 silly gunzTarPerm extractEntry README.md
+380 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+381 silly gunzTarPerm extractEntry README.md
+382 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+383 silly gunzTarPerm extractEntry lib/
+384 silly gunzTarPerm modified mode [ 'lib/', 493, 511 ]
+385 silly gunzTarPerm extractEntry index.js
+386 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+387 silly gunzTarPerm extractEntry example/line_count_options.js
+388 silly gunzTarPerm modified mode [ 'example/line_count_options.js', 420, 438 ]
+389 silly gunzTarPerm extractEntry example/boolean_double.js
+390 silly gunzTarPerm modified mode [ 'example/boolean_double.js', 420, 438 ]
+391 silly gunzTarPerm extractEntry example/divide.js
+392 silly gunzTarPerm modified mode [ 'example/divide.js', 420, 438 ]
+393 silly gunzTarPerm extractEntry .npmignore
+394 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+395 silly gunzTarPerm extractEntry Makefile
+396 silly gunzTarPerm modified mode [ 'Makefile', 420, 438 ]
+397 silly gunzTarPerm extractEntry lib/stringFormat.js
+398 silly gunzTarPerm modified mode [ 'lib/stringFormat.js', 420, 438 ]
+399 silly gunzTarPerm extractEntry .idea/
+400 silly gunzTarPerm modified mode [ '.idea/', 493, 511 ]
+401 silly gunzTarPerm extractEntry .idea/.name
+402 silly gunzTarPerm modified mode [ '.idea/.name', 420, 438 ]
+403 silly gunzTarPerm extractEntry test/
+404 silly gunzTarPerm modified mode [ 'test/', 493, 511 ]
+405 silly gunzTarPerm extractEntry test/stringFormatTest.js
+406 silly gunzTarPerm modified mode [ 'test/stringFormatTest.js', 420, 438 ]
+407 silly gunzTarPerm extractEntry test/indentTest.js
+408 silly gunzTarPerm modified mode [ 'test/indentTest.js', 420, 438 ]
+409 silly gunzTarPerm extractEntry package.json
+410 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+411 silly gunzTarPerm extractEntry index.js
+412 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+413 silly gunzTarPerm extractEntry example/nonopt.js
+414 silly gunzTarPerm modified mode [ 'example/nonopt.js', 420, 438 ]
+415 silly gunzTarPerm extractEntry example/string.js
+416 silly gunzTarPerm modified mode [ 'example/string.js', 420, 438 ]
+417 silly gunzTarPerm extractEntry package.json
+418 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+419 silly gunzTarPerm extractEntry lib/
+420 silly gunzTarPerm modified mode [ 'lib/', 493, 511 ]
+421 silly gunzTarPerm extractEntry lib/async.js
+422 silly gunzTarPerm modified mode [ 'lib/async.js', 420, 438 ]
+423 silly gunzTarPerm extractEntry LICENSE
+424 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+425 silly gunzTarPerm extractEntry example/default_hash.js
+426 silly gunzTarPerm modified mode [ 'example/default_hash.js', 420, 438 ]
+427 silly gunzTarPerm extractEntry example/reflect.js
+428 silly gunzTarPerm modified mode [ 'example/reflect.js', 420, 438 ]
+429 silly gunzTarPerm extractEntry .gitmodules
+430 silly gunzTarPerm modified mode [ '.gitmodules', 420, 438 ]
+431 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings\package.json
+432 silly gunzTarPerm extractEntry example/default_singles.js
+433 silly gunzTarPerm modified mode [ 'example/default_singles.js', 420, 438 ]
+434 silly gunzTarPerm extractEntry example/usage-options.js
+435 silly gunzTarPerm modified mode [ 'example/usage-options.js', 420, 438 ]
+436 info preinstall bindings@0.3.0
+437 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings\package.json
+438 silly gunzTarPerm extractEntry example/bool.js
+439 silly gunzTarPerm modified mode [ 'example/bool.js', 420, 438 ]
+440 silly gunzTarPerm extractEntry example/short.js
+441 silly gunzTarPerm modified mode [ 'example/short.js', 420, 438 ]
+442 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings\package.json
+443 silly gunzTarPerm extractEntry example/xup.js
+444 silly gunzTarPerm modified mode [ 'example/xup.js', 420, 438 ]
+445 silly gunzTarPerm extractEntry example/boolean_single.js
+446 silly gunzTarPerm modified mode [ 'example/boolean_single.js', 420, 438 ]
+447 silly install resolved []
+448 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+449 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+450 info linkStuff bindings@0.3.0
+451 silly linkStuff bindings@0.3.0 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules as its parent node_modules
+452 verbose linkBins bindings@0.3.0
+453 verbose linkMans bindings@0.3.0
+454 verbose rebuildBundles bindings@0.3.0
+455 info install bindings@0.3.0
+456 silly gunzTarPerm extractEntry example/line_count_wrap.js
+457 silly gunzTarPerm modified mode [ 'example/line_count_wrap.js', 420, 438 ]
+458 silly gunzTarPerm extractEntry example/line_count.js
+459 silly gunzTarPerm modified mode [ 'example/line_count.js', 420, 438 ]
+460 info postinstall bindings@0.3.0
+461 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\bindings-a8d37b1bcce4b5fd.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\bindings
+462 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async\package.json
+463 silly gunzTarPerm extractEntry readme.markdown
+464 silly gunzTarPerm modified mode [ 'readme.markdown', 420, 438 ]
+465 silly gunzTarPerm extractEntry test/parse.js
+466 silly gunzTarPerm modified mode [ 'test/parse.js', 420, 438 ]
+467 info preinstall async@0.1.18
+468 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async\package.json
+469 silly gunzTarPerm extractEntry test/_.js
+470 silly gunzTarPerm modified mode [ 'test/_.js', 420, 438 ]
+471 silly gunzTarPerm extractEntry test/usage.js
+472 silly gunzTarPerm modified mode [ 'test/usage.js', 420, 438 ]
+473 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async\package.json
+474 silly gunzTarPerm extractEntry test/_/bin.js
+475 silly gunzTarPerm modified mode [ 'test/_/bin.js', 493, 511 ]
+476 silly gunzTarPerm extractEntry test/_/argv.js
+477 silly gunzTarPerm modified mode [ 'test/_/argv.js', 420, 438 ]
+478 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf\package.json
+479 silly install resolved []
+480 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+481 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+482 info linkStuff async@0.1.18
+483 silly linkStuff async@0.1.18 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules as its parent node_modules
+484 info preinstall sf@0.1.3
+485 verbose linkBins async@0.1.18
+486 verbose linkMans async@0.1.18
+487 verbose rebuildBundles async@0.1.18
+488 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf\package.json
+489 silly gunzTarPerm extractEntry .travis.yml
+490 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+491 info install async@0.1.18
+492 info postinstall async@0.1.18
+493 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\async-9306e47cb965bbe5.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\async
+494 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf\package.json
+495 silly install resolved []
+496 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+497 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+498 info linkStuff sf@0.1.3
+499 silly linkStuff sf@0.1.3 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules as its parent node_modules
+500 verbose linkBins sf@0.1.3
+501 verbose linkMans sf@0.1.3
+502 verbose rebuildBundles sf@0.1.3
+503 info install sf@0.1.3
+504 info postinstall sf@0.1.3
+505 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\sf-07847029138f1acc.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\sf
+506 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\package.json
+507 info preinstall optimist@0.3.7
+508 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\package.json
+509 silly prepareForInstallMany adding wordwrap@~0.0.2 from optimist dependencies
+510 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\package.json
+511 silly cache add args [ 'wordwrap@~0.0.2', null ]
+512 verbose cache add spec wordwrap@~0.0.2
+513 silly cache add parsed spec Result {
+513 silly cache add   raw: 'wordwrap@~0.0.2',
+513 silly cache add   scope: null,
+513 silly cache add   name: 'wordwrap',
+513 silly cache add   rawSpec: '~0.0.2',
+513 silly cache add   spec: '>=0.0.2 <0.1.0',
+513 silly cache add   type: 'range' }
+514 silly addNamed wordwrap@>=0.0.2 <0.1.0
+515 verbose addNamed ">=0.0.2 <0.1.0" is a valid semver range for wordwrap
+516 silly addNameRange { name: 'wordwrap', range: '>=0.0.2 <0.1.0', hasData: false }
+517 silly mapToRegistry name wordwrap
+518 silly mapToRegistry using default registry
+519 silly mapToRegistry registry https://registry.npmjs.org/
+520 silly mapToRegistry data Result {
+520 silly mapToRegistry   raw: 'wordwrap',
+520 silly mapToRegistry   scope: null,
+520 silly mapToRegistry   name: 'wordwrap',
+520 silly mapToRegistry   rawSpec: '',
+520 silly mapToRegistry   spec: 'latest',
+520 silly mapToRegistry   type: 'tag' }
+521 silly mapToRegistry uri https://registry.npmjs.org/wordwrap
+522 verbose addNameRange registry:https://registry.npmjs.org/wordwrap not in flight; fetching
+523 verbose request uri https://registry.npmjs.org/wordwrap
+524 verbose request no auth needed
+525 info attempt registry request try #1 at 8:31:07 PM
+526 http request GET https://registry.npmjs.org/wordwrap
+527 http 200 https://registry.npmjs.org/wordwrap
+528 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+528 verbose headers   etag: '"EJIKDPZLF7J8QHRSPBCBABX9T"',
+528 verbose headers   'content-type': 'application/json',
+528 verbose headers   'content-encoding': 'gzip',
+528 verbose headers   'cache-control': 'max-age=300',
+528 verbose headers   'content-length': '1939',
+528 verbose headers   'accept-ranges': 'bytes',
+528 verbose headers   date: 'Fri, 28 Oct 2016 03:31:07 GMT',
+528 verbose headers   via: '1.1 varnish',
+528 verbose headers   age: '234',
+528 verbose headers   connection: 'keep-alive',
+528 verbose headers   'x-served-by': 'cache-ord1742-ORD',
+528 verbose headers   'x-cache': 'HIT',
+528 verbose headers   'x-cache-hits': '6',
+528 verbose headers   'x-timer': 'S1477625467.205104,VS0,VE0',
+528 verbose headers   vary: 'Accept-Encoding' }
+529 silly get cb [ 200,
+529 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+529 silly get     etag: '"EJIKDPZLF7J8QHRSPBCBABX9T"',
+529 silly get     'content-type': 'application/json',
+529 silly get     'content-encoding': 'gzip',
+529 silly get     'cache-control': 'max-age=300',
+529 silly get     'content-length': '1939',
+529 silly get     'accept-ranges': 'bytes',
+529 silly get     date: 'Fri, 28 Oct 2016 03:31:07 GMT',
+529 silly get     via: '1.1 varnish',
+529 silly get     age: '234',
+529 silly get     connection: 'keep-alive',
+529 silly get     'x-served-by': 'cache-ord1742-ORD',
+529 silly get     'x-cache': 'HIT',
+529 silly get     'x-cache-hits': '6',
+529 silly get     'x-timer': 'S1477625467.205104,VS0,VE0',
+529 silly get     vary: 'Accept-Encoding' } ]
+530 verbose get saving wordwrap to C:\Users\Jean-Luc\AppData\Roaming\npm-cache\registry.npmjs.org\wordwrap\.cache.json
+531 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+532 silly addNameRange number 2 { name: 'wordwrap', range: '>=0.0.2 <0.1.0', hasData: true }
+533 silly addNameRange versions [ 'wordwrap', [ '0.0.1', '0.0.2', '0.0.3', '1.0.0' ] ]
+534 silly addNamed wordwrap@0.0.3
+535 verbose addNamed "0.0.3" is a plain semver version for wordwrap
+536 silly mapToRegistry name wordwrap
+537 silly mapToRegistry using default registry
+538 silly mapToRegistry registry https://registry.npmjs.org/
+539 silly mapToRegistry data Result {
+539 silly mapToRegistry   raw: 'wordwrap',
+539 silly mapToRegistry   scope: null,
+539 silly mapToRegistry   name: 'wordwrap',
+539 silly mapToRegistry   rawSpec: '',
+539 silly mapToRegistry   spec: 'latest',
+539 silly mapToRegistry   type: 'tag' }
+540 silly mapToRegistry uri https://registry.npmjs.org/wordwrap
+541 verbose addRemoteTarball https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz not in flight; adding
+542 verbose addRemoteTarball [ 'https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz',
+542 verbose addRemoteTarball   'a3d5da6cd5c0bc0008d37234bbaf1bed63059107' ]
+543 info retry fetch attempt 1 at 8:31:07 PM
+544 info attempt registry request try #1 at 8:31:07 PM
+545 http fetch GET https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz
+546 http fetch 200 https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz
+547 silly fetchAndShaCheck shasum a3d5da6cd5c0bc0008d37234bbaf1bed63059107
+548 verbose addTmpTarball C:\cygwin64\tmp\npm-7352-94994e0f\registry.npmjs.org\wordwrap\-\wordwrap-0.0.3.tgz not in flight; adding
+549 verbose addTmpTarball already have metadata; skipping unpack for wordwrap@0.0.3
+550 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+551 silly cache afterAdd wordwrap@0.0.3
+552 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\wordwrap\0.0.3\package\package.json not in flight; writing
+553 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+554 verbose afterAdd C:\Users\Jean-Luc\AppData\Roaming\npm-cache\wordwrap\0.0.3\package\package.json written
+555 silly install resolved [ { name: 'wordwrap',
+555 silly install resolved     description: 'Wrap those words. Show them at what columns to start and stop.',
+555 silly install resolved     version: '0.0.3',
+555 silly install resolved     repository:
+555 silly install resolved      { type: 'git',
+555 silly install resolved        url: 'git://github.com/substack/node-wordwrap.git' },
+555 silly install resolved     main: './index.js',
+555 silly install resolved     keywords: [ 'word', 'wrap', 'rule', 'format', 'column' ],
+555 silly install resolved     directories: { lib: '.', example: 'example', test: 'test' },
+555 silly install resolved     scripts: { test: 'expresso' },
+555 silly install resolved     devDependencies: { expresso: '=0.7.x' },
+555 silly install resolved     engines: { node: '>=0.4.0' },
+555 silly install resolved     license: 'MIT',
+555 silly install resolved     author:
+555 silly install resolved      { name: 'James Halliday',
+555 silly install resolved        email: 'mail@substack.net',
+555 silly install resolved        url: 'http://substack.net' },
+555 silly install resolved     gitHead: 'e59aa1bd338914019456bdfba034508c9c4cb29d',
+555 silly install resolved     bugs: { url: 'https://github.com/substack/node-wordwrap/issues' },
+555 silly install resolved     homepage: 'https://github.com/substack/node-wordwrap#readme',
+555 silly install resolved     _id: 'wordwrap@0.0.3',
+555 silly install resolved     _shasum: 'a3d5da6cd5c0bc0008d37234bbaf1bed63059107',
+555 silly install resolved     _from: 'wordwrap@>=0.0.2 <0.1.0',
+555 silly install resolved     _npmVersion: '2.9.0',
+555 silly install resolved     _nodeVersion: '2.0.0',
+555 silly install resolved     _npmUser: { name: 'substack', email: 'substack@gmail.com' },
+555 silly install resolved     dist:
+555 silly install resolved      { shasum: 'a3d5da6cd5c0bc0008d37234bbaf1bed63059107',
+555 silly install resolved        tarball: 'https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz' },
+555 silly install resolved     maintainers: [ [Object] ],
+555 silly install resolved     _resolved: 'https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz' } ]
+556 info install wordwrap@0.0.3 into C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+557 info installOne wordwrap@0.0.3
+558 verbose installOne of wordwrap to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist not in flight; installing
+559 verbose correctMkdir C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+560 verbose lock using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\wordwrap-613944a2878dedff.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+561 silly install write writing wordwrap 0.0.3 to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+562 verbose unbuild node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+563 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+564 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+565 verbose tar unpack C:\Users\Jean-Luc\AppData\Roaming\npm-cache\wordwrap\0.0.3\package.tgz
+566 verbose tar unpacking to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+567 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap is being purged
+568 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+569 silly gunzTarPerm modes [ '777', '666' ]
+570 silly gunzTarPerm extractEntry package.json
+571 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+572 silly gunzTarPerm extractEntry LICENSE
+573 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+574 silly gunzTarPerm extractEntry index.js
+575 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+576 silly gunzTarPerm extractEntry README.markdown
+577 silly gunzTarPerm modified mode [ 'README.markdown', 420, 438 ]
+578 silly gunzTarPerm extractEntry example/center.js
+579 silly gunzTarPerm modified mode [ 'example/center.js', 420, 438 ]
+580 silly gunzTarPerm extractEntry example/meat.js
+581 silly gunzTarPerm modified mode [ 'example/meat.js', 420, 438 ]
+582 silly gunzTarPerm extractEntry test/break.js
+583 silly gunzTarPerm modified mode [ 'test/break.js', 420, 438 ]
+584 silly gunzTarPerm extractEntry test/wrap.js
+585 silly gunzTarPerm modified mode [ 'test/wrap.js', 420, 438 ]
+586 silly gunzTarPerm extractEntry test/idleness.txt
+587 silly gunzTarPerm modified mode [ 'test/idleness.txt', 420, 438 ]
+588 verbose write writing to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap\package.json
+589 info preinstall wordwrap@0.0.3
+590 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap\package.json
+591 verbose readDependencies loading dependencies from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap\package.json
+592 silly install resolved []
+593 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+594 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+595 info linkStuff wordwrap@0.0.3
+596 silly linkStuff wordwrap@0.0.3 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules as its parent node_modules
+597 verbose linkBins wordwrap@0.0.3
+598 verbose linkMans wordwrap@0.0.3
+599 verbose rebuildBundles wordwrap@0.0.3
+600 info install wordwrap@0.0.3
+601 info postinstall wordwrap@0.0.3
+602 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\wordwrap-613944a2878dedff.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist\node_modules\wordwrap
+603 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+604 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+605 info linkStuff optimist@0.3.7
+606 silly linkStuff optimist@0.3.7 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules as its parent node_modules
+607 verbose linkBins optimist@0.3.7
+608 verbose linkMans optimist@0.3.7
+609 verbose rebuildBundles optimist@0.3.7
+610 verbose rebuildBundles [ 'wordwrap' ]
+611 info install optimist@0.3.7
+612 info postinstall optimist@0.3.7
+613 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\optimist-8192db89de07b7a0.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2\node_modules\optimist
+614 verbose about to build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+615 info build C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+616 info linkStuff serialport2@0.0.5
+617 silly linkStuff serialport2@0.0.5 has C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules as its parent node_modules
+618 verbose linkBins serialport2@0.0.5
+619 verbose link bins [ { serialportlist: './bin/serialportList.js',
+619 verbose link bins     serialportterm: './bin/serialportTerminal.js' },
+619 verbose link bins   'C:\\cygwin64\\home\\Jean-Luc\\LED-SuperController\\Downsize_Update\\ledapp\\node_modules\\.bin',
+619 verbose link bins   false ]
+620 verbose linkMans serialport2@0.0.5
+621 verbose rebuildBundles serialport2@0.0.5
+622 verbose rebuildBundles [ 'async', 'bindings', 'optimist', 'sf' ]
+623 info install serialport2@0.0.5
+624 verbose unsafe-perm in lifecycle true
+625 info serialport2@0.0.5 Failed to exec install script
+626 verbose unlock done using C:\Users\Jean-Luc\AppData\Roaming\npm-cache\_locks\serialport2-5fc49646e2c3e9f0.lock for C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+627 verbose stack Error: serialport2@0.0.5 install: `node-gyp rebuild`
+627 verbose stack Exit status 1
+627 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:217:16)
+627 verbose stack     at emitTwo (events.js:87:13)
+627 verbose stack     at EventEmitter.emit (events.js:172:7)
+627 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+627 verbose stack     at emitTwo (events.js:87:13)
+627 verbose stack     at ChildProcess.emit (events.js:172:7)
+627 verbose stack     at maybeClose (internal/child_process.js:829:16)
+627 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+628 verbose pkgid serialport2@0.0.5
+629 verbose cwd C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+630 error Windows_NT 10.0.14393
+631 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "serialport2"
+632 error node v4.6.1
+633 error npm  v2.15.9
+634 error code ELIFECYCLE
+635 error serialport2@0.0.5 install: `node-gyp rebuild`
+635 error Exit status 1
+636 error Failed at the serialport2@0.0.5 install script 'node-gyp rebuild'.
+636 error This is most likely a problem with the serialport2 package,
+636 error not with npm itself.
+636 error Tell the author that this fails on your system:
+636 error     node-gyp rebuild
+636 error You can get information on how to open an issue for this project with:
+636 error     npm bugs serialport2
+636 error Or if that isn't available, you can get their info via:
+636 error
+636 error     npm owner ls serialport2
+636 error There is likely additional logging output above.
+637 verbose exit [ 1, true ]
+638 verbose unbuild node_modules\serialport2
+639 info preuninstall serialport2@0.0.5
+640 info uninstall serialport2@0.0.5
+641 verbose unbuild rmStuff serialport2@0.0.5 from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules
+642 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist.cmd is being gently removed
+643 silly gentlyRm verifying C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is an npm working directory
+644 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm.cmd is being gently removed
+645 silly gentlyRm verifying C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is an npm working directory
+646 silly gentlyRm containing path C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is under npm's control, in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+647 silly gentlyRm deletion target C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist.cmd is under C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+648 verbose gentlyRm vacuuming from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist.cmd up to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+649 silly gentlyRm containing path C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is under npm's control, in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+650 silly gentlyRm deletion target C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm.cmd is under C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+651 verbose gentlyRm vacuuming from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm.cmd up to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+652 silly vacuum-fs removing C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist.cmd
+653 silly vacuum-fs removing C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm.cmd
+654 silly vacuum-fs quitting because other entries in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin
+655 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist is being gently removed
+656 silly gentlyRm verifying C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is an npm working directory
+657 silly gentlyRm containing path C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is under npm's control, in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+658 silly gentlyRm deletion target C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist is under C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+659 verbose gentlyRm vacuuming from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist up to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+660 silly vacuum-fs quitting because other entries in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin
+661 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm is being gently removed
+662 silly gentlyRm verifying C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is an npm working directory
+663 silly gentlyRm containing path C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp is under npm's control, in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+664 silly gentlyRm deletion target C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm is under C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+665 verbose gentlyRm vacuuming from C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm up to C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+666 silly vacuum-fs removing C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportlist
+667 silly vacuum-fs removing C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin\serialportterm
+668 silly vacuum-fs quitting because other entries in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin
+669 silly vacuum-fs quitting because other entries in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\.bin
+670 info postuninstall serialport2@0.0.5
+671 silly gentlyRm C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2 is being purged from base C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp
+672 verbose gentlyRm don't care about contents; nuking C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+673 silly vacuum-fs purging C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules\serialport2
+674 silly vacuum-fs quitting because other entries in C:\cygwin64\home\Jean-Luc\LED-SuperController\Downsize_Update\ledapp\node_modules

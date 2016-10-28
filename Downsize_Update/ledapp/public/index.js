@@ -24,8 +24,7 @@
                         $("#green").slider("value",g)
                         $("#blue").slider("value",b)
                         //update lights
-                        vals = 'r='+r+'&g='+g+'&b='+b+'&s='+software;
-                        $.get('/apply',vals);
+                        socket.emit('apply',r,g,b,1);
                         break;
                     case 'slider':
                         //change r,g,b from current slider values
@@ -35,8 +34,7 @@
                         var hexy=hexFromRGB(r,g,b);
                         $(".sp-input").val('#'+hexy);
                         $(".sp-input").change();
-                        vals = 'r='+r+'&g='+g+'&b='+b+'&s='+software;
-                        $.get('/apply',vals);
+                        socket.emit('apply',r,g,b,1);
                         break;
                     case 'lights':
                         var hexy=hexFromRGB(r,g,b);
@@ -59,16 +57,6 @@ function slideWrapper(){
     updateAll(0,0,0,'slider');
 }
            
-function pollServerForNewInfo() {
-  	if(software==0){
-		$.getJSON('/supply', function (response) {
-            if(response.info==1){
-                updateAll(response.red,response.green,response.blue,'lights');
-		    }
-        });
-		setTimeout(pollServerForNewInfo, 15);
-	}
-  } 
 $(function() {
 
 	$( "#red, #green, #blue" ).slider({
@@ -125,8 +113,10 @@ $(function() {
         $('#soft').addClass('btn-default');
         $('#soft').removeClass('btn-primary');
         $('.ui-slider,.sp-container').css('pointer-events','none');
-        vals = 'r='+0+'&g='+0+'&b='+0+'&s='+software; //applys that trailing 0 to alert Arduino/python
-        $.get('/apply',vals); // and sends it
-		pollServerForNewInfo();
+        socket.emit('apply',0,0,0,software);
     } );
+    socket.on('supply', function(r,g,b){
+        updateAll(r,g,b,'lights');
+        console.log('client',r,g,b);
+    });
 });

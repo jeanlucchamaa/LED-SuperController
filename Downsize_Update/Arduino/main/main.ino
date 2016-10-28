@@ -1,6 +1,7 @@
 const byte numChars = 32;
 char receivedChars[numChars]; // an array to store the received data
 byte red; byte green; byte blue; // bytes are 8-bit values, 0-255 unsigned
+float fRed=90; float fGreen=90; float fBlue=90;
 bool software=false;
 boolean newData = false;
 
@@ -60,28 +61,34 @@ void recieveCommand() {
 
 void loop(){
 		if(!software){
-			
 			int noOfChanges=0;
-			byte redcur=byte(analogRead(A4)/4); //assign current Red to 'cur'
-			if(abs(red-redcur)>1){ // if red changed
+			delay(2);
+			fRed+=(analogRead(A4)/4 - fRed)/4;
+			byte redcur=byte(fRed); //assign current Red to 'cur'
+			if(redcur!=red){ // if red changed
 				red=redcur;  // assign red
 				noOfChanges++; // prep for serial change
 			}
-			byte greencur=byte(analogRead(A1)/4);  //assign current Green to 'cur'
-			if(abs(green-greencur)>1){
+			delay(2);
+			fGreen+=(analogRead(A1)/4 - fGreen)/4;
+			byte greencur=byte(fGreen);  //assign current Green to 'cur'
+			if(green!=greencur){
 				green=greencur;
 				noOfChanges++;
 			}
-			byte bluecur=byte(analogRead(A0)/4);  //assign current Blue to 'cur'
-			if(abs(blue-bluecur)>1){ // if blue changed
+			delay(2);
+			fBlue+=(analogRead(A0)/4 - fBlue)/4;
+			byte bluecur=byte(fBlue);  //assign current Blue to 'cur'
+			if(blue!=bluecur){ // if blue changed
 				blue=bluecur;  // assign blue
 				noOfChanges++;
 			}
 			if(noOfChanges>0){
-				// TODO make sure that we don't ship any zeros except for zero byte
-				Serial.write(min(red+1,255));
-				Serial.write(min(green+1,255));
-				Serial.write(min(blue+1,255));
+				Serial.print(min(red+1,255));
+				Serial.print(',');
+				Serial.print(min(green+1,255));
+				Serial.print(',');
+				Serial.print(min(blue+1,255));
 				Serial.write('\0');
 			}		
 		}
