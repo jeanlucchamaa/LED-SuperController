@@ -58,7 +58,20 @@ function slideWrapper(){
 }
            
 $(function() {
-
+    var alarmhour=0;
+    var alarmminutes=0;
+    $(".timepicker").timepicker({
+		interval: 10,
+		minTime: '4:00',
+		maxTime: '7:00',
+		defaultTime: '5:00',
+		startTime: '5:00',
+        dynamic: false,
+        change: function(time) {
+            alarmhour=time.getHours();
+            alarmminutes=time.getMinutes();
+        }
+    });
 	$( "#red, #green, #blue" ).slider({
 	  orientation: "horizontal",
 	  range: "min",
@@ -87,7 +100,6 @@ $(function() {
 		$("#pane4").hide();
 		$("[role='presentation']").removeClass("active");
 		$("#b3").addClass("active");
-        $.get('/nappy');
 	});
 
     $('#b2').trigger("click");
@@ -119,4 +131,11 @@ $(function() {
         updateAll(r,g,b,'lights');
         console.log('client',r,g,b);
     });
+    var alarmButton = document.getElementById("timeButton");
+    alarmButton.onclick=function(){
+        console.log("bloppity doop");
+        var alarm=document.getElementById("myTime");
+        console.log(alarm);
+        socket.emit('nappy',alarmhour,alarmminutes);
+    };
 });

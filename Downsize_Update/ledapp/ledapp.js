@@ -38,6 +38,28 @@ io.on('connection',function(socket){
         port.write(colorBuffer);
         port.write('\0');
     });
+    socket.on('nappy', function(ah,am){
+        console.log(ah,am);
+        var now = new Date();
+        var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ah, am, 0, 0) - now;
+        if (millisTill10 < 0) {
+             millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
+        }
+        intensity=1;
+        setTimeout(function(){
+            console.log("It's happening!");
+			(function myLoop (i) {          
+			    setTimeout(function () {   
+                intensity+=intensity/4;
+                const colorBuffer = Buffer.from([intensity,intensity,intensity,2]);
+                console.log(colorBuffer);
+                port.write(colorBuffer);
+                port.write('\0');
+				if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+			    }, 500)
+			})(24);                        //  pass the number of iterations as an argument
+            }, millisTill10);
+    });
 });
 
 http.listen(5000, function(){
