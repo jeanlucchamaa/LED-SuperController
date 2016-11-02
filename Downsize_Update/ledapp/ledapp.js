@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = new SerialPort("COM3", {
+var port = new SerialPort("/dev/ttyUSB0", {
     baudRate: 38400,
     parser : SerialPort.parsers.readline('\0')
 });
@@ -56,7 +56,7 @@ io.on('connection',function(socket){
                 port.write(colorBuffer);
                 port.write('\0');
 				if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
-			    }, 500)
+			    }, 60000)
 			})(24);                        //  pass the number of iterations as an argument
             }, millisTill10);
     });
